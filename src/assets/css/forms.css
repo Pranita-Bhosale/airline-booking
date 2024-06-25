@@ -1,0 +1,1268 @@
+
+/* Validation related class*/
+.redLabel{
+    color: red;
+}
+.custom-select.is-valid,
+.form-control.is-valid,
+.was-validated .custom-select:valid,
+.was-validated .form-control:valid {
+    border-color: var(--input-border) !important;
+}
+
+.custom-select.is-invalid,
+.form-control.is-invalid,
+.was-validated .custom-select:invalid,
+.was-validated .form-control:invalid {
+    /* background: var(--availNow-panel3-bg) 0% 0% no-repeat padding-box; */
+    box-shadow: 0px 0px 0px red;
+}
+
+.custom-select.is-invalid:focus,
+.form-control.is-invalid:focus,
+.was-validated .custom-select:invalid:focus,
+.was-validated .form-control:invalid:focus {
+    border-color: red !important;
+    box-shadow: none !important;
+}
+
+.custom-select.is-valid:focus,
+.form-control.is-valid:focus,
+.was-validated .custom-select:valid:focus,
+.was-validated .form-control:valid:focus {
+    box-shadow: 0px 0px 0px var(--input-border) !important;
+}
+
+.otp-textbox .form-control.is-invalid,
+.was-validated .otp-textbox .form-control:invalid {
+    background-position: bottom;
+    background-size: 80px 1px;
+    background-repeat: repeat-x;
+    background-position-x: 50px;
+}
+
+.form-control.fourInput.is-valid,
+.was-validated .form-control.fourInput:valid {
+    border-color: var(--validated-bg) !important;
+    background-color: var(--input-border);
+    pointer-events: none;
+}
+
+.form-control.is-valid,
+.was-validated .form-control:valid {
+    background-image: none !important;
+}
+
+.custom-control-input.is-valid:checked~.custom-control-label::before,
+.was-validated .custom-control-input:valid:checked~.custom-control-label::before {
+    border-color: var(--primary-color);
+    background-color: var(--availNow-panel3-bg);
+}
+
+.custom-control-input.is-valid~.custom-control-label::before,
+.was-validated .custom-control-input:valid~.custom-control-label::before {
+    border-color: var(--primary-color);
+}
+
+.custom-control-input.is-valid~.custom-control-label,
+.was-validated .custom-control-input:valid~.custom-control-label {
+    color: var(--border-color1) !important;
+}
+
+.custom-control-input.is-valid~.custom-control-label::before,
+.was-validated .custom-control-input:valid~.custom-control-label::before {
+    color: var(--border-color1) !important;
+}
+
+.valid-feedback.feedback-icon {
+    width: auto;
+    bottom: 10px;
+    margin-left: 9px;
+    position: absolute;
+    top: 5px;
+    right: -8px;
+}
+
+.feedback-icon i {
+    font-size: 17px;
+}
+
+.mandatory-text {
+    color: red;
+    font-size: 12px;
+}
+
+label,
+.col-form-label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--label-color);
+}
+
+.plabel {
+  font-size: 0.875rem;
+  line-height: 2.2rem;
+  margin: 0;
+}
+
+.med-label {
+  font-size: 0.876rem;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+}
+
+.small-label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--prodtile-label);
+}
+
+.form-group p {
+  font-size: 0.875rem;
+}
+
+.form-control {
+  font-size: 0.875rem;
+  padding: 0.375rem 0.75rem !important;
+}
+
+.error-msg {
+  color: red;
+  font-size: 11px;
+  line-height: 14px;
+  display: inline-block;
+  margin-top: 7px;
+}
+
+.error-msg-container {
+  /* height: 10px; */
+}
+
+/* custom radio and checkbox related classes */
+
+.custom-control-label {
+  position: relative;
+  margin-bottom: 0;
+  vertical-align: top;
+  font-weight: normal;
+}
+
+.custom-control-label::before {
+  position: absolute;
+  top: 2px;
+  left: -1.5rem;
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  pointer-events: none;
+  content: "";
+  border: 1px solid var(--chckbox-border);
+  background: white !important;
+}
+
+.custom-radio .custom-control-input:checked ~ .custom-control-label::before {
+  background: white;
+  border-color: var(--primary-color) !important;
+}
+
+.custom-control-input {
+  position: absolute;
+  left: 0;
+  z-index: -1;
+  width: 1rem;
+  height: 1.25rem;
+  opacity: 0;
+}
+
+.custom-radio .custom-control-input:checked ~ .custom-control-label::after {
+  /* background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23F36F21'/%3e%3c/svg%3e") !important; */
+  background: var(--primary-color);
+  border-radius: 60px;
+  width: 8px;
+  height: 8px;
+  top: 6px;
+  left: -20px;
+}
+
+td
+  > .custom-radio
+  .custom-control-input:checked
+  ~ .custom-control-label::after {
+  top: 5px;
+  left: 3px;
+}
+
+.custom-control-label::after {
+  position: absolute;
+  top: 2px;
+  left: -1.5rem;
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  content: "";
+  background: 50%/50% 50% no-repeat;
+}
+
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+  background-color: var(--primary-color)!important;
+  border-color: var(--primary-color);
+}
+
+.custom-control-input:disabled ~ .custom-control-label::before,
+.custom-control-input:checked:disabled ~ .custom-control-label::before,
+.custom-control-input[disabled] ~ .custom-control-label::before {
+  background-color: var(--slider-handle-border) !important;
+  border-color: var(--step-color) !important;
+}
+.custom-radio .custom-control-input:disabled:checked~.custom-control-label::after{
+  background-color: var(--slider-handle-border) !important;
+  border-color: var(--step-color) !important;
+}
+
+/* Kedar 8th July 2022: For radio button checked and disabled */
+.custom-radio .custom-control-input:checked:disabled ~ .custom-control-label::before,
+.custom-radio .custom-control-input:disabled ~ .custom-control-label::before,
+.custom-control-input:disabled ~ .custom-control-label::before{
+  background-color: white !important;
+  border: 1px solid var(--dropdown-border-color)!important;
+}
+/* checkbox checked and disabled */
+.custom-checkbox .custom-control-input:disabled ~ .custom-control-label::before {
+  border: 1px solid var(--dropdown-border-color)!important;
+}
+.custom-checkbox .custom-control-input:checked:disabled ~ .custom-control-label::before {
+  background-color: var(--dropdown-border-color) !important;
+}
+
+.custom-checkbox .custom-control-label::before, .custom-checkbox .custom-control-label::after{
+  width:18px;
+  height:18px;
+  border-color: var(--compare-checkbox-border);
+  border-radius:2px;
+}
+/* End */
+
+/* file upload button related classes */
+
+.custom-file-big {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: calc(1.5em + 0.75rem + 2px);
+  margin-bottom: 0;
+}
+
+.custom-file-big .customFileIcon {
+  left: 4px;
+  top: 4px;
+}
+
+.custom-file {
+  position: relative;
+  display: inline-block;
+  width: 90px;
+  height: calc(1.5em + 0.75rem + 2px);
+  margin-bottom: 0;
+}
+
+.customFileInput {
+  cursor: pointer;
+}
+
+.custom-file-input {
+  position: relative;
+  z-index: 2;
+  width: 90px;
+  height: calc(1.5em + 0.75rem + 2px);
+  margin: 0;
+  opacity: 0;
+  overflow: hidden !important;
+}
+
+.customFileInput {
+  cursor: pointer;
+}
+
+.customFileIcon {
+  color: white;
+  z-index: 4;
+  position: relative;
+  left: 0;
+  top: 2px;
+  float: left;
+  font-size: 1rem;
+}
+
+.customFileInput:lang(en) ~ .customFileLabel::after {
+  content: "Upload";
+  border: 2px solid var(--primary-color);
+  border-radius: 4px;
+  color: white;
+  width: 90px;
+  text-align: right;
+  cursor: pointer;
+  background: var(--primary-color);
+  font-size: 0.875rem;
+  line-height: 23px;
+}
+
+.custom-file-label::after {
+  padding: 0.2rem 0.6rem !important;
+}
+
+.custom-file-input:lang(en) ~ .custom-file-label::after {
+  content: "Upload";
+}
+
+.custom-file-input:lang(en) ~ .custom-submit-label::after {
+  content: "Select Coupon File";
+  width: 175px;
+}
+
+.largeuploadButton,
+.largeuploadButton .customFileInput {
+  width: 175px;
+}
+
+.largeuploadButton .customFileLabel {
+  padding: 5px 8px;
+}
+
+.custom-reupload-file {
+  width: 102px;
+}
+.custom-reuploadfile-label{
+padding:0.375rem 0.4rem !important;
+
+}
+.custom-file-input:lang(en) ~ .custom-reuploadfile-label::after {
+  content: " Re-upload " !important;
+  width: 102px;
+}
+
+.custom-file-input:lang(en) ~ .custom-file-label.disabled::after {
+  border: 1px solid var(--border-color1);
+  background-color: var(--border-color);
+  color: var(--step-text-color);
+  cursor: not-allowed !important;
+}
+
+.upload-file-input:lang(en) ~ .custom-submit-label::after {
+  content: "Upload PRC" !important;
+  width: 125px !important;
+}
+
+.reupload-file-input:lang(en) ~ .custom-submit-label::after {
+  content: "Re-upload" !important;
+  width: 105px !important;
+}
+
+.uploadButton {
+  width: 125px;
+  font-weight: 400 !important;
+}
+
+.reuploadButton {
+  width: 105px;
+  font-weight: 400 !important;
+}
+
+.custom-file-input:disabled:hover,
+.custom-file-input:lang(en) ~ .custom-file-label.disabled:hover::after {
+  cursor: not-allowed !important;
+}
+
+.custom-file-input:disabled ~ .custom-file-label:hover,
+.custom-file-input[disabled] ~ .custom-file-label:hover {
+  cursor: not-allowed !important;
+}
+
+.upload-file-input.disabled,
+.upload-file-input[disabled] {
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+}
+
+.reupload-file-input.disabled,
+.reupload-file-input[disabled] {
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+}
+
+.forReupload {
+  float: right;
+}
+
+.forReupload > .custom-file-input:lang(en) ~ .custom-file-label::after {
+  content: "Re-Upload";
+  text-align: right;
+  width: 85px;
+  font-size: 12px;
+  padding-right: 5px !important;
+  line-height: 18px !important;
+}
+
+.forReupload > .custom-file-input:lang(en) ~ .custom-file-label {
+  width: 85px;
+  font-size: 12px;
+}
+
+.forReupload > .custom-file-input {
+  width: 85px;
+}
+
+.forReupload .customFileIcon {
+  color: white;
+  z-index: 4;
+  position: relative;
+  left: -7px;
+  top: 2px;
+  float: left;
+  font-size: 0.875rem;
+}
+
+.sanction-letterBtn .custom-file-input:lang(en) ~ .custom-file-label::after {
+  content: "Upload Sanction letter";
+  text-align: right;
+  width: 165px;
+  font-size: 12px;
+  position: relative;
+  top: -9px;
+  left: -17px;
+  padding: 6px !important;
+  height: auto;
+  font-weight: 500;
+}
+
+.sanction-letterBtn
+  .custom-file-input:lang(en)
+  ~ .custom-file-label.disabled::after {
+  border: 1px solid var(--border-color1);
+  background-color: var(--border-color);
+  color: var(--step-text-color);
+  cursor: not-allowed;
+}
+
+.sanction-letterBtn .custom-file {
+  width: 161px;
+}
+
+.redDanger {
+  color: red;
+  font-size: 14px;
+  font-weight: normal;
+}
+.redDanger :hover {
+  color: red;
+  font-size: 14px;
+  font-weight: normal;
+}
+.custom-file-label {
+  background: transparent !important;
+  border:none;
+}
+
+.custom-file-label::after,
+.custom-file-big::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  display: block;
+  height: calc(1.5em + 0.75rem);
+  padding: 0.375rem 0.75rem;
+  line-height: 1.5;
+  color: var(--arrow-color);
+  content: "Select File";
+  background-color: var(--custfile-bg);
+  border-left: inherit;
+  border-radius: 0 0.25rem 0.25rem 0;
+}
+
+::-webkit-file-upload-button {
+  cursor: pointer;
+}
+
+.custom-file-upload {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: calc(1.5em + 0.75rem + 2px);
+  margin: 0;
+  opacity: 0;
+}
+
+input.custom-file-upload.customFileInput:disabled,
+input.custom-file-upload.customFileInput:disabled + label.customFileLabelUpload,
+input.custom-file-upload.customFileInput:disabled
+  + label.customFileLabelUpload::after,
+input.custom-file-input.customFileInput:disabled
+  + label.customFileLabelUpload:hover,
+input.custom-file-upload.customFileInput:disabled
+  ~ label
+  ~ i.fa.fa-upload.customFileIcon,
+input.custom-file-upload.customFileInput:disabled
+  ~ label
+  ~ i.fa.fa-upload.customFileIcon:hover,
+input.custom-file-upload.disabled .customFileLabel::after,
+.disabled.customFileInput:lang(en) ~ .customFileLabel::after,
+.disabled.customFileInput:lang(en) ~ .customFileLabel:hover,
+input[type="file"].disabled::-webkit-file-upload-button {
+  border: 1px solid var(--border-color1);
+  background-color: var(--border-color);
+  color: var(--step-text-color) !important;
+  cursor: not-allowed !important;
+  font-size: 0.875rem;
+}
+
+.disabled.customFileInput:lang(en) ~ .customFileLabel i.fa {
+  color: var(--step-text-color) !important;
+}
+
+.custom-file-upload:disabled ~ .custom-file-label,
+.custom-file-upload[disabled] ~ .custom-file-label {
+  background-color: var(--breadcrumb-bg-color);
+}
+
+.width-select {
+  width: auto !important;
+  padding: 0 0 0 8px !important;
+  min-width: 62px;
+  max-width: 64px;
+  background: white !important;
+}
+
+.width-select:disabled {
+  background-color: var(--breadcrumb-bg-color)!important;
+}
+
+.forResubmit {
+  float: right;
+}
+
+.forResubmit > .custom-file-input:lang(en) ~ .custom-file-label::after {
+  content: "Re-Submit";
+  text-align: right;
+  width: 95px;
+  font-size: 12px;
+  line-height: 20px !important;
+  font-weight: normal;
+}
+
+.forResubmit > .custom-file-input:lang(en) ~ .custom-file-label {
+  width: 95px;
+  font-size: 12px;
+}
+
+.forResubmit > .custom-file-input {
+  width: 95px;
+}
+
+.forResubmit .customFileIcon {
+  color: white;
+  z-index: 4;
+  position: relative;
+  top: 2px;
+  left: -3px;
+  font-size: 0.875rem;
+}
+
+.forSubmit {
+  float: right;
+}
+
+.forSubmit > .custom-file-input:lang(en) ~ .custom-file-label::after {
+  content: "Submit";
+  text-align: right;
+  width: 95px;
+  font-size: 12px;
+  line-height: 20px !important;
+  font-weight: normal;
+  padding-right: 20px !important;
+}
+
+.forSubmit > .custom-file-input:lang(en) ~ .custom-file-label {
+  width: 95px;
+  font-size: 12px;
+}
+
+.forSubmit > .custom-file-input {
+  width: 95px;
+}
+
+.forSubmit .customFileIcon {
+  color: white;
+  z-index: 4;
+  position: relative;
+  top: 2px;
+  left: 0px;
+  font-size: 0.875rem;
+}
+
+/* button related classes */
+
+.commonBtn {
+  background-color: var(--primary-color);
+  color: white;
+  border: 2px solid var(--primary-color);
+  font: 13px/15px Roboto;
+  min-width: 88px;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 8px 15px;
+  -webkit-appearance: none;
+}
+
+.commonBtn:hover {
+  background-color: transparent;
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.commonBtnTransparent {
+  background-color: transparent;
+  color: var(--primary-color);
+  -webkit-appearance: none;
+}
+
+.commonBtnTransparent:hover {
+  color: white;
+  background: var(--primary-color);
+}
+
+.commonBtnTransparent svg {
+  height: 14px;
+  width: 14px;
+  fill: var(--primary-color);
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.commonBtnTransparent:hover svg {
+  fill: white;
+}
+
+.availBtn {
+  background-color: var(--primary-color);
+  color: white;
+  border: 2px solid var(--primary-color);
+  font: 13px/15px Roboto;
+  min-width: 118px;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 8px 15px;
+  -webkit-appearance: none;
+}
+
+.availBtn:hover {
+  background-color: var(--primary-color);
+  color: white;
+  text-decoration: none;
+}
+
+.small-commonBtn {
+  background-color: var(--primary-color);
+  color: white;
+  border: 2px solid var(--primary-color);
+  border-radius: 5px;
+  font: normal 13px/15px Roboto;
+  min-width: 118px;
+  height: 30px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.small-width-commonBtn {
+  background-color: var(--primary-color);
+  color: white;
+  border: 2px solid var(--primary-color);
+  font: 14px/15px Roboto;
+  min-width: 90px;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 8px 0.75rem;
+}
+
+.downloadBtn {
+  background-color: var(--primary-color);
+  color: white;
+  border: 2px solid var(--primary-color);
+  font: 14px/15px Roboto;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 8px 12px;
+}
+
+.apply-commonBtn {
+  background-color: var(--primary-color);
+  color: white;
+  border: 2px solid var(--primary-color);
+  font: 13px/15px Roboto;
+  /* min-width: 118px; */
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 8px 15px;
+  -webkit-appearance: none;
+}
+
+.apply-commonBtn:hover {
+  background-color: transparent;
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.btn-disabled,
+button:disabled,
+button[disabled="disabled"],
+button:disabled:hover,
+button[disabled="disabled"]:hover,
+button.disabled,
+button.disabled:hover {
+  border: 1px solid var(--border-color1);
+  background-color: var(--border-color);
+  color: var(--step-text-color);
+  cursor: not-allowed;
+}
+
+.dateFilter svg {
+  width: 19px;
+  height: 19px;
+}
+
+button:focus {
+  outline: 0 !important;
+}
+
+input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+
+input:focus:-moz-placeholder {
+  color: transparent;
+}
+
+/* FF 4-18 */
+
+input:focus::-moz-placeholder {
+  color: transparent;
+}
+
+/* FF 19+ */
+
+input:focus:-ms-input-placeholder {
+  color: transparent;
+}
+
+.selectedFilters .chips {
+  font-size: 12px;
+  background: var(--dropdown-border-color);
+  padding: 5px;
+  border-radius: 3px;
+}
+
+.selectedFilters .chips a {
+  padding-left: 5px;
+}
+
+@media (max-width: 640px) {
+  .plabel {
+    margin-bottom: 10px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .commonBtn {
+    background-color: var(--primary-color);
+    color: white;
+    border: 2px solid var(--primary-color);
+    font: 12px/15px Roboto;
+    min-width: 105px;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 8px 10px;
+  }
+
+  .commonBtnTransparent {
+    background-color: transparent;
+    color: var(--primary-color);
+  }
+
+  .small-commonBtn {
+    background-color: var(--primary-color);
+    color: white;
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    font: normal 11px/15px Roboto;
+    min-width: 90px;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+
+  .plabel {
+    line-height: 1rem !important;
+  }
+  .redDanger {
+    color: red;
+    font-size: 12px;
+    font-weight: normal;
+  }
+  .redDanger :hover {
+    color: red;
+    font-size: 12px;
+    font-weight: normal;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .form-group p {
+    font-size: 10px !important;
+  }
+
+  .commonBtn {
+    background-color: var(--primary-color);
+    color: white;
+    border: 2px solid var(--primary-color);
+    font: 11px/15px Roboto;
+    min-width: 75px;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 5px;
+  }
+
+  .commonBtnTransparent {
+    background-color: transparent;
+    color: var(--primary-color);
+  }
+
+  .small-commonBtn {
+    background-color: var(--primary-color);
+    color: white;
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    font: normal 10px/15px Roboto;
+    min-width: 75px;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+
+  .form-control {
+    font-size: 10px;
+  }
+
+  label,
+  .col-form-label,
+  .plabel {
+    font-size: 10px;
+  }
+
+  .error-msg {
+    font-size: 10px;
+  }
+
+  .small-label {
+    font-size: 11px;
+  }
+}
+
+.no-resize {
+  resize: none;
+}
+
+/* for chrome */
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* for mozilla */
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.form-control.is-invalid,
+.was-validated .form-control:invalid {
+  background-position: right 16px center !important;
+}
+input.form-control.is-invalid,
+.was-validated input.form-control:invalid {
+  background-position: right 5px center !important;
+}
+.error-textbox {
+  box-shadow: 0px 0px 0px red !important;
+  border: 1px solid red !important;
+  background: white;
+}
+
+.error-textbox:focus {
+  border: 1px solid red !important;
+  box-shadow: 0 0 0 0.2rem var(--validation-error-shadow) !important;
+}
+
+.max-range {
+  padding: 0;
+  float: right;
+  cursor: default;
+  color: black;
+  font-size: 11px;
+  margin-top: 10px;
+}
+
+.min-range {
+  cursor: default;
+  padding: 1px 3px;
+  color: black;
+  font-size: 11px;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+.no-validation-img.is-invalid,
+.was-validated .no-validation-img:invalid {
+  background: white !important;
+}
+
+/* attachment upload related classes */
+
+.custom-attachment {
+  position: relative;
+  display: inline-block;
+  width: 25px;
+  height: calc(1.5em + 0.75rem + 2px);
+  margin-bottom: 0;
+}
+
+.customattachmentinput {
+  cursor: pointer;
+}
+
+.custom-attachment-input {
+  position: relative;
+  z-index: 99;
+  width: 25px;
+  height: calc(1.5em + 0.75rem + 2px);
+  margin: 0;
+  opacity: 0;
+  overflow: hidden !important;
+  padding: 0;
+}
+
+.customattachmentinput {
+  cursor: pointer;
+}
+
+.customattachmentinput:lang(en) ~ .customFileLabel::after {
+  content: "";
+  border-radius: 4px;
+  color: white;
+  width: 30px;
+  text-align: right;
+  cursor: pointer;
+  background: transparent;
+  font-size: 0.875rem;
+  line-height: 23px;
+}
+
+.custom-attachment-label::after {
+  padding: 0.2rem 0.6rem !important;
+}
+
+.custom-attachment-input:lang(en) ~ .custom-attachment-label::after {
+  content: "";
+}
+
+.custom-attachment-label {
+  background: transparent !important;
+  margin-top: 10px;
+  position: absolute;
+  margin-left: -18px;
+}
+
+.custom-attachment-label::after,
+.custom-file-big::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  display: block;
+  height: calc(1.5em + 0.75rem);
+  padding: 0.375rem 0.75rem;
+  line-height: 1.5;
+  color: var(--arrow-color);
+  content: "Select File";
+  background-color: var(--custfile-bg);
+  border-left: inherit;
+  border-radius: 0 0.25rem 0.25rem 0;
+}
+
+.custom-attachment-min-max {
+  font-size: 20px !important;
+  color: var(--chckbox-border);
+  padding-right: 10px;
+  margin-top: -10px;
+  padding-bottom: 19px;
+  margin-left: -8px;
+}
+
+.editable-dropdown .dropdown-menu {
+  transform: translate3d(0px, 35px, 0px) !important;
+  width: 100%;
+}
+
+.editable-dropdown .dropdown-item {
+  font-size: 14px;
+}
+
+.editable-dropdown .input-group-btn {
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--header-nav-div-bg-color);
+  text-align: center;
+  background-color: var(--sidebar-off-white-bg);
+  border: 1px solid var(--step-border-color);
+  border-radius: 4px;
+}
+
+.text-eclipse {
+  white-space: nowrap;
+  width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.forSelectFile::ng-deep .largeuploadButton .custom-file-input {
+  width: 175px;
+}
+
+.disabledLink {
+  pointer-events: none;
+  display: inline-block;
+  cursor: default;
+}
+
+.address-overflow {
+  overflow: auto;
+  word-break: break-all;
+  height: 100px;
+}
+
+/* Custom scrollbar for sidebar */
+.address-overflow::-webkit-scrollbar {
+  width: 8px;
+  height: 10px;
+}
+
+.address-overflow::-webkit-scrollbar-track {
+  background: var(--scrollbarBG);
+}
+
+.address-overflow::-webkit-scrollbar-thumb {
+  background-color: var(--thumbBG);
+  border-radius: 6px;
+  border: 3px solid var(--scrollbarBG);
+}
+
+.warehouseaddress-ellipses {
+  white-space: nowrap;
+  width: 250px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rowcolor-red {
+  background-color: red !important;
+  color: white !important;
+}
+
+.rowcolor-red a {
+  background-color: red !important;
+  color: white !important;
+}
+
+.labelData {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  padding-top: calc(0.375rem + 1px);
+  padding-bottom: calc(0.375rem + 1px);
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+/* .cust-dd-w_header .btn{
+    font-size: 0.875rem;
+  }
+
+  .cust-dd-w_header .dropdown-toggle::after{
+    float: right;
+    position: relative;
+    top: 10px;
+  }
+  .cust-dd-w_header .dropdown-header{
+    color: #5c5c5f;
+    padding: .5rem 1rem;
+    font-weight: 600;
+} */
+
+select.form-control {
+  text-overflow: ellipsis;
+  /* max-width: 100%; */
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  word-break: break-word;
+  position: relative;
+ 
+  padding-right: 1.25rem!important;
+  -webkit-appearance: none;
+    appearance: none;
+}
+.form-control:disabled, .form-control[readonly] {
+  background-color: var(--breadcrumb-bg-color)!important;
+  opacity: 1;
+}
+/* option{
+  text-overflow: ellipsis;
+  max-width: 100%;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  word-break: break-word;
+  position: relative;
+} */
+.wrap {
+  word-wrap: break-word;
+  text-overflow: inherit;
+  white-space: normal;
+}
+
+.disabled-input-label{
+  border:0!important;
+  background:none!important;
+}
+
+.gstinDropdown{
+  height: auto;
+  overflow-y: auto;
+  max-height: 162px
+}
+.dropdown-toggle.arrow-gstin::after{
+  display: none;
+}
+#chatinput{
+appearance: none;
+background: none;
+
+}
+
+.commonBtn-thin-border {
+  border: 1px solid var(--primary-color) !important;
+  
+}
+@media screen and (max-width:767px) {
+  .full-width-btn{
+    width:100%!important;
+  }
+}
+
+.PageHeader1 {
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
+    font-weight: 600;
+}
+.PageHeader2 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+.PageHeader3 {
+    font-size: 1.3rem;
+    line-height: 2rem;
+    font-weight: 600;
+    margin: 0rem 1rem 0 1rem;
+}
+.PageHeader3-withBorder {
+    font-size: 1.3rem;
+    line-height: 2rem;
+    font-weight: 600;
+    border-bottom: 1px solid var(--step-border-color);
+    margin: 0rem 1rem 0 1rem;
+
+}
+
+.PageHeader4-withBorder {
+    font-size: 1.2rem;
+    line-height: 2rem;
+    font-weight: 600;
+    border-bottom: 1px solid var(--step-border-color);
+    margin: 0;
+}
+
+
+.PageHeader4 {
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+/* Added during Invoice validation CR 42549 */
+.PageHeader5-withBorder {
+    font-size: 12px;
+    line-height: 2rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color:var(--step-text-color)
+}
+.PageHeader5-withBorder div{ 
+    background: white;
+    display: inline;
+    padding-right:15px;
+}
+.PageHeader5-withBorder span{
+    border-top: 1px solid var(--step-border-color);
+    width: 100%;
+    margin-top: -16px;
+    /* position: absolute; */
+    display: block;
+}
+
+@media only screen and (max-width: 320px){
+    .PageHeader1 {
+        font-size: 1.2rem;
+        margin-bottom: 1.2rem;
+        font-weight: 600;
+    }
+    .PageHeader2 {
+        font-size: 0.875rem;
+        margin-bottom: 1.2rem;
+        font-weight: 600;
+    }
+    
+    .PageHeader3-withBorder {
+        font-size: 1rem;
+        line-height: 2rem;
+        font-weight: 600;
+        border-bottom: 1px solid var(--step-border-color);
+        margin: 0rem 1rem 0 1rem;
+    
+    }
+}
+
+@media (min-width: 321px) and (max-width: 767.98px) { 
+     .PageHeader3-withBorder {
+         font-size: 16px;
+     }
+    
+}

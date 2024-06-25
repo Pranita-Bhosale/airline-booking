@@ -1,0 +1,46 @@
+<div class="center-box" style="height: 40%; width: 20%; margin: 11%40%">
+    <h1>User Signup</h1>
+    <hr />
+    <form [formGroup]="signupForm" (ngSubmit)="signup()">
+      <div class="mb-3">
+        <label for="username" class="form-label" style="color:white">Username</label>
+        <input type="text" class="form-control" id="username" formControlName="username"/>
+        <div
+          class="alert alert-danger"
+          *ngIf="signupForm.controls['username'].invalid && signupForm.controls['username'].dirty"
+        >
+          please enter a valid user username.
+        </div>
+      </div>
+  
+      <div class="mb-3">
+        <label for="password" class="form-label" style="color:white">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          formControlName="password"
+        />
+        <div
+          class="alert alert-danger"
+          *ngIf="signupForm.controls['password'].invalid &&
+            signupForm.controls['password'].dirty"
+        >
+          please enter a valid password.
+        </div>
+      </div>
+  
+      <button
+        [disabled]="signupForm.invalid"
+        type="submit"
+        class="btn btn-primary"
+      >
+        Signup
+      </button>
+      <div *ngIf="errorMessage" class="text-danger">
+        {{ errorMessage }}
+      </div>
+    </form>
+    <hr />
+  </div>
+  

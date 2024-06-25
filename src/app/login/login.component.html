@@ -1,0 +1,53 @@
+<div class="center-box" style="height: 40%; width: 20%; margin: 11%40%">
+    <h1>User Login</h1>
+    <hr />
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" class="form-control" id="username" formControlName="username"/>
+        <div
+          class="alert alert-danger"
+          *ngIf="loginForm.controls['username'].invalid && loginForm.controls['username'].dirty"
+        >
+          please enter a valid user username.
+        </div>
+      </div>
+  
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          formControlName="password"
+        />
+        <div
+          class="alert alert-danger"
+          *ngIf="loginForm.controls['password'].invalid &&
+            loginForm.controls['password'].dirty"
+        >
+          please enter a valid password.
+        </div>
+      </div>
+  
+      <button
+        [disabled]="loginForm.invalid"
+        type="submit"
+        class="btn btn-primary"
+      >
+        Login
+      </button>
+      &nbsp;
+      <button type="button" class="btn btn-primary" [routerLink]="['/register']">
+        Register
+      </button>
+      <div *ngIf="errorMessage" class="text-danger">
+        {{errorMessage}}
+      </div>
+    </form>
+    <p class="text-center">
+      <a [routerLink]="['/forgotPassword']">Forgot Password?</a>
+    </p>
+    <hr />
+  </div>
+  
