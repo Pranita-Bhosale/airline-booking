@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    background-image: url("src/assets/images/airplane.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.nav_anchor {
+    color: rgb(229, 96, 59);
+    text-transform: capitalize;
+}

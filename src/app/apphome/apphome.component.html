@@ -1,0 +1,23 @@
+
+<div class="SearchCity">
+    <div class="fromDiv">
+    <label for="fromCity" >
+        <span class="SpanFrom" style="color: black;">Source</span>
+        <div style="color:black"> Cities:
+            <select >
+                <option *ngFor="let city of Cities">{{city}}</option>
+            </select>
+        </div>
+   </label>
+</div>  
+<div class="toDiv">
+    <label for="toCity">
+        <span class="spanTo" style="color: black">Destination</span>
+        <div style="color: black"> Cities:
+            <select >
+                <option *ngFor="let city of Cities">{{city}}</option>
+            </select>
+        </div>
+    </label>
+</div>
+</div>
