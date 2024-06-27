@@ -1,23 +1,71 @@
-
-<div class="SearchCity">
-    <div class="fromDiv">
-    <label for="fromCity" >
-        <span class="SpanFrom" style="color: black;">Source</span>
-        <div style="color:black"> Cities:
-            <select >
-                <option *ngFor="let city of Cities">{{city}}</option>
-            </select>
-        </div>
-   </label>
-</div>  
-<div class="toDiv">
-    <label for="toCity">
-        <span class="spanTo" style="color: black">Destination</span>
-        <div style="color: black"> Cities:
-            <select >
-                <option *ngFor="let city of Cities">{{city}}</option>
-            </select>
-        </div>
+<form [formGroup]="apphomeForm" (ngSubmit)="getSchedule()" >
+   <div class=" parent">
+    <div class="mb-3">
+      <label for="source" class="form-label"> 
+      <h2>Source</h2>
     </label>
-</div>
-</div>
+      <!-- <input type="text" class="form-control" id="source" formControlName="source"/> -->
+        <select id="source" class="form-control" formControlName="source">
+            <option *ngFor="let c of Cities" [ngValue]="c">{{ c }}</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="destination" class="form-label"><h2>Destination</h2></label>
+      <!-- <input
+        type="text"
+        class="form-control"
+        id="destination"
+        formControlName="destination"
+      /> -->
+      <select id="destination" class="form-control" formControlName="destination">
+        <option *ngFor="let c of Cities" [ngValue]="c">{{ c }}</option>
+    </select>
+    </div>
+    <div class="mb-3">
+        <label for="date" class="form-label"><h2>Date</h2></label>
+        <input
+          type="date"
+          class="form-control"
+          id="date"
+          formControlName="date"
+        />
+      </div>
+    </div>
+    <button
+      [disabled]="apphomeForm.invalid"
+      type="submit"
+      class="btn btn-primary"
+    >
+      Search
+    </button>
+    <div *ngIf="errorMessage" class="text-danger parent">
+      {{errorMessage}}
+    </div>
+  </form>
+  <div *ngIf="successMessage" class="text-info parent">
+    {{successMessage}}
+  </div>
+
+  <div *ngIf="Schedule.length!=0" class="table parent">
+    <table>
+        <tr>
+            <th>Plane Id</th>
+            <th>Source</th>
+            <th>Destination</th>
+            <th>Departure Date</th>
+            <th>Arrival Date</th>
+            <th>Fare</th>
+            <th></th>
+        </tr>
+        <tr *ngFor="let s of Schedule">
+            <td>{{ s.planeId }}</td>
+            <td><h6>{{ s.source | uppercase}}</h6></td>
+            <td><h6>{{ s.destination| uppercase }}</h6></td>
+            <td><h4>{{ s.departureDateTime | date :'h:mm a' }}</h4>{{ s.departureDateTime | date :'dd MMM yyyy' }} </td>
+            <td><h4>{{ s.arrivalDateTime | date :'h:mm a' }}</h4>{{ s.arrivalDateTime | date :'dd MMM yyyy' }} </td>
+            <td><h6>{{ s.fare | currency:'INR'}}</h6></td>
+            <td><button class="btn btn-primary">Book</button></td>
+        </tr>
+    </table>
+  </div>

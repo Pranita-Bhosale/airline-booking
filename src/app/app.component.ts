@@ -9,19 +9,28 @@ import { UserService } from './user.service';
 })
 export class AppComponent {
   title = 'airline-booking';
-  userId: string;
-  role: string;
   username: string;
+  role: string;
 
 
   constructor(private router: Router, private _userService: UserService) { }
 
-  async ngOnInit() {
-    // this.userId = "ajay";
+  ngOnInit() {
+    this.username = localStorage.getItem("username");
+    this.role = localStorage.getItem("role"); 
+    console.log(this.username);
+    console.log(this.role);
+  }
+
+  ngOnChange() {
+    this.username = localStorage.getItem("username");
+    this.role = localStorage.getItem("role"); 
+    console.log(this.username);
+    console.log(this.role);
   }
 
   defaultHome() {
-    if (this.userId) {
+    if (this.username) {
       if (this.role == 'admin') {
         this.router.navigate(['/adminhome']);
       } else {
@@ -29,5 +38,12 @@ export class AppComponent {
       }
     }
     this.router.navigate(['/']);
+  }
+
+  logout() {
+    this.username = null;
+    localStorage.removeItem("username");
+    localStorage.removeItem("role");
+    this.router.navigate['/'];
   }
 }

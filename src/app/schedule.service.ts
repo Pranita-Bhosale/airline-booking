@@ -1,27 +1,21 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable,catchError, tap, throwError } from 'rxjs';
-import { Login } from './model/Login';
+import { Observable, catchError, throwError } from 'rxjs';
+import { Schedule } from './model/Schedule';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
-
+export class ScheduleService {
   URL = "http://192.168.1.9:8080";
+  //userName: string = '';
 
-  userName: string = '';
   constructor(private http: HttpClient) { }
 
-  userLogin(user: Login): Observable<Login> | any {
-
-    return this.http.post(this.URL + "/login", user).pipe(
-      catchError(this.handleError)
-    ); 
-  }
-
-  userSignup(user: Login): Observable<any> | any {
-    return this.http.post(this.URL + "/signup", user, { responseType: 'text' }).pipe(
+  getSchedule(source:string,destination:string,date:string): Observable<Schedule[]> | any {
+    console.log(date);
+    let query="source="+source+"&destination="+destination+"&departureDateTime="+date;
+    return this.http.get<Schedule[]>(this.URL + "/getschedules?"+query).pipe(
       catchError(this.handleError)
     );
   }

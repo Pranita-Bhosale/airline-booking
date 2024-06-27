@@ -11,6 +11,8 @@ import { SignupComponent } from './signup/signup.component';
 import { UserhomeComponent } from './userhome/userhome.component';
 import { AdminhomeComponent } from './adminhome/adminhome.component';
 import { ApphomeComponent } from './apphome/apphome.component';
+import { ScheduleService } from './schedule.service';
+
 
 
 @NgModule({
@@ -21,7 +23,6 @@ import { ApphomeComponent } from './apphome/apphome.component';
     UserhomeComponent,
     AdminhomeComponent,
     ApphomeComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -30,7 +31,7 @@ import { ApphomeComponent } from './apphome/apphome.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [UserService],
+  providers: [UserService, ScheduleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

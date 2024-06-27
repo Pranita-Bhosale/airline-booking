@@ -14,26 +14,24 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
   errorMessage: string;
-  @Input() username: string;
+  //@Input() username: string;
 
   constructor(private formBuilder: FormBuilder, private router: Router, private userService: UserService) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-
       username: ['', [Validators.required, Validators.pattern("[A-Za-z0-9.]{6,15}")]],
       password: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(15)]]
-    })
+    });
 
-    // let username = localStorage.getItem("username");
-    // let role = localStorage.getItem("role");
-
-    // if (username != undefined && role != undefined) {
-    //   if (role == 'admin')
-    //     this.router.navigate(['adminhome']);
-    //   else if (role == 'user')
-    //     this.router.navigate(['userhome']);
-    // }
+    let username = localStorage.getItem("username");
+    let role = localStorage.getItem("role");
+    if (username != undefined && role != undefined) {
+      if (role == 'admin')
+        this.router.navigate(['adminhome']);
+      else if (role == 'user')
+        this.router.navigate(['userhome']);
+    }
 
   }
 
@@ -50,12 +48,10 @@ export class LoginComponent implements OnInit {
             localStorage.setItem("role", "user");
             this.router.navigate(['userhome']);
           }
-          window.alert("Login sucess: " + data);
         },
         (error) => {
           this.loginForm.reset();
           this.errorMessage = error;
-          window.alert("Login failed " + error);
         }
       )
   }

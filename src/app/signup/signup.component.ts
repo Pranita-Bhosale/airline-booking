@@ -13,10 +13,13 @@ export class SignupComponent implements OnInit {
 
   signupForm: FormGroup;
   errorMessage: string;
+  successMessage: string;
 
   constructor(private formBuilder: FormBuilder, private router: Router, private userService: UserService) { }
 
   ngOnInit(): void {
+    this.errorMessage = undefined;
+    this.successMessage = undefined;
     this.signupForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.pattern("[A-Za-z0-9.]{6,15}")]],
       password: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(15)]]
@@ -25,17 +28,17 @@ export class SignupComponent implements OnInit {
 
 
   signup() {
+    this.errorMessage = undefined;
     let username = this.signupForm.value.username;
     this.userService.userSignup(new Login(username, this.signupForm.value.password))
       .subscribe(
         (data) => {
-
-          window.alert("Signup success" + data);
+          this.signupForm.reset();//
+          this.successMessage = data;
         },
         (error) => {
-          this.signupForm.reset();
+          this.signupForm.reset();//
           this.errorMessage = error;
-          window.alert("user already exists please login" + error);
         }
       )
   }
