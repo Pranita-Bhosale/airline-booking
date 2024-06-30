@@ -1,0 +1,36 @@
+.container {
+    width: 900px;
+    height: 600px;
+    margin-top: px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 30px;
+}
+
+.parent-1 {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 35px;
+}
+
+h2 {
+    text-align: center;
+}
+
+.parent-2 {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.parent-3 {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}

@@ -7,20 +7,17 @@ import { Schedule } from './model/Schedule';
   providedIn: 'root'
 })
 export class ScheduleService {
-  URL = "http://192.168.1.9:8080";
-  //userName: string = '';
-
+  URL = "http://localhost:8080";
   constructor(private http: HttpClient) { }
 
-  getSchedule(source:string,destination:string,date:string): Observable<Schedule[]> | any {
-    console.log(date);
-    let query="source="+source+"&destination="+destination+"&departureDateTime="+date;
-    return this.http.get<Schedule[]>(this.URL + "/getschedules?"+query).pipe(
+  getSchedule(source: string, destination: string, date: string): Observable<Schedule[]> | any {
+    let query = "source=" + source + "&destination=" + destination + "&departureDateTime=" + date;
+    return this.http.get<Schedule[]>(this.URL + "/getschedules?" + query).pipe(
       catchError(this.handleError)
     );
   }
 
-  handleError(err: HttpErrorResponse){
+  handleError(err: HttpErrorResponse) {
     let errorMessage = '';
 
     if (err.error instanceof Error) {

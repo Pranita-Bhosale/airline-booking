@@ -1,14 +1,15 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable,catchError, tap, throwError } from 'rxjs';
+import { Observable, catchError, tap, throwError } from 'rxjs';
 import { Login } from './model/Login';
+import { user } from './model/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  URL = "http://192.168.1.9:8080";
+  URL = "http://localhost:8080";
 
   userName: string = '';
   constructor(private http: HttpClient) { }
@@ -17,7 +18,7 @@ export class UserService {
 
     return this.http.post(this.URL + "/login", user).pipe(
       catchError(this.handleError)
-    ); 
+    );
   }
 
   userSignup(user: Login): Observable<any> | any {
@@ -26,15 +27,16 @@ export class UserService {
     );
   }
 
-  handleError(err: HttpErrorResponse){
+  addUserDetails(User: user): Observable<any> | any {
+    return this.http.post(this.URL + "/users", User, { responseType: 'text' }).pipe(
+      catchError(this.handleError));
+  }
+
+  handleError(err: HttpErrorResponse) {
+    console.log(err);
     let errorMessage = '';
 
-    if (err.error instanceof Error) {
-      console.log("Network Error: " + err.error.message);
-      errorMessage = err.error.message;
-    }
-
-    else if (err.statusText == "Unknown Error") {
+    if (err.statusText == "Unknown Error") {
       console.log("Unknown Error: " + err.statusText);
       errorMessage = "Unable to connect to the server";
     }

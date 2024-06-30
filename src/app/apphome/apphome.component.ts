@@ -11,11 +11,11 @@ import { ScheduleService } from '../schedule.service';
 export class ApphomeComponent implements OnInit {
 
   errorMessage: string;
-  successMessage:string;
+  successMessage: string;
   apphomeForm: FormGroup;
-  public Schedule: any [] = [];
+  public Schedule: any[] = [];
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private scheduleservice:ScheduleService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private scheduleservice: ScheduleService) { }
 
   Cities: string[] = ["Pune", "Mumbai", "Sangali", "Solapur", "Satara", "Goa", "hyderabad", "Gudgaon"];
 
@@ -24,29 +24,34 @@ export class ApphomeComponent implements OnInit {
       source: '',
       destination: '',
       date: ''
-  });
+    });
+
   }
 
-  getSchedule(){
+  getSchedule() {
 
-    if (this.apphomeForm.value.date==''){
+    if (this.apphomeForm.value.date == '') {
       this.errorMessage = "Please select valid date";
       return;
     }
     this.errorMessage = null;
     this.successMessage = '';
-  
+
     this.scheduleservice.getSchedule(this.apphomeForm.value.source,
       this.apphomeForm.value.destination, this.apphomeForm.value.date).subscribe(
-      (data: any) => {
-        this.Schedule = data;
-        if(this.Schedule.length==0){
-          this.successMessage="No Flights found for this route";
+        (data: any) => {
+          this.Schedule = data;
+          if (this.Schedule.length == 0) {
+            this.successMessage = "No Flights found for this route";
+          }
+        },
+        (error: any) => {
+          this.errorMessage = error;
         }
-      },
-      (error: any) =>{
-       this.errorMessage= error;
-      }
-    )
+      )
   }
+  getUserDetails() {
+    this.router.navigate(['/userhome']);
+  }
+
 }
