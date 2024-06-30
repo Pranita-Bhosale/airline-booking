@@ -6,7 +6,7 @@
     </label>
       <!-- <input type="text" class="form-control" id="source" formControlName="source"/> -->
         <select id="source" class="form-control" formControlName="source">
-            <option *ngFor="let c of Cities" [ngValue]="c">{{ c }}</option>
+            <option *ngFor="let c of Cities" >{{ c }}</option>
         </select>
     </div>
 
@@ -19,7 +19,7 @@
         formControlName="destination"
       /> -->
       <select id="destination" class="form-control" formControlName="destination">
-        <option *ngFor="let c of Cities" [ngValue]="c">{{ c }}</option>
+        <option *ngFor="let c of Cities" >{{ c }}</option>
     </select>
     </div>
     <div class="mb-3">
@@ -32,9 +32,11 @@
         />
       </div>
     </div>
-    <button
+    
+    <button 
+    
       [disabled]="apphomeForm.invalid"
-      type="submit"
+      type="submit" [disabled]="apphomeForm.value.source === apphomeForm.value.destination"
       class="btn btn-primary"
     >
       Search
@@ -47,7 +49,7 @@
     {{successMessage}}
   </div>
 
-  <div *ngIf="Schedule.length!=0" class="table parent">
+    <div *ngIf="Schedule.length!=0" class="table parent">
     <table>
         <tr>
             <th>Plane Id</th>
@@ -65,7 +67,10 @@
             <td><h4>{{ s.departureDateTime | date :'h:mm a' }}</h4>{{ s.departureDateTime | date :'dd MMM yyyy' }} </td>
             <td><h4>{{ s.arrivalDateTime | date :'h:mm a' }}</h4>{{ s.arrivalDateTime | date :'dd MMM yyyy' }} </td>
             <td><h6>{{ s.fare | currency:'INR'}}</h6></td>
-            <td><button class="btn btn-primary">Book</button></td>
+            <td><button  class="btn btn-primary" (click)="getUserDetails()">Book</button></td>
+            
         </tr>
     </table>
+
   </div>
+  
