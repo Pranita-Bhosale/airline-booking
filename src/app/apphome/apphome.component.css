@@ -1,10 +1,8 @@
 .parent {
-     display: flex;
-     justify-content: space-around;
-     margin: 450px, 400px;
-     padding: 30px;
-    
-
+    display: flex;
+    justify-content: space-around;
+    margin: 450px, 400px;
+    padding: 30px;
 }
 
 .fromDiv {
@@ -12,7 +10,6 @@
     color: rgb(191, 71, 71);
     padding: 50px;
     border-radius: 20px;
-
 }
 
 .toDiv {
@@ -21,16 +18,14 @@
     padding: 50px;
     border-radius: 20px;
 }
-.searchbtn{
-    
-        display: flex;
-        justify-content: center;
-        background-color:rgb(7, 4, 4) ;
-       
-        
-        /* padding: 30px;
-        border: 10px; */
+
+.searchbtn {
+
+    display: flex;
+    justify-content: center;
+    background-color: rgb(7, 4, 4);
 }
-.btn{
-    margin-left: 600px;  
+
+.btn {
+    margin-left: 600px;
 }

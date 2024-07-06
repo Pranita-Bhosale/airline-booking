@@ -8,6 +8,7 @@ import { UserService } from './user.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
   title = 'airline-booking';
   username: string;
   role: string;
@@ -17,33 +18,28 @@ export class AppComponent {
 
   ngOnInit() {
     this.username = localStorage.getItem("username");
-    this.role = localStorage.getItem("role"); 
+    this.role = localStorage.getItem("role");
     console.log(this.username);
     console.log(this.role);
   }
 
   ngOnChange() {
     this.username = localStorage.getItem("username");
-    this.role = localStorage.getItem("role"); 
+    this.role = localStorage.getItem("role");
     console.log(this.username);
     console.log(this.role);
   }
-
-  defaultHome() {
-    if (this.username) {
-      if (this.role == 'admin') {
-        this.router.navigate(['/adminhome']);
-      } else {
-        this.router.navigate(['/userhome']);
-      }
-    }
-    this.router.navigate(['/']);
-  }
-
   logout() {
     this.username = null;
     localStorage.removeItem("username");
     localStorage.removeItem("role");
-    this.router.navigate['/'];
+    console.log("removed user from storage");
+    this.router.navigate(['login']);
+  }
+  navigatesignup() {
+    this.router.navigate(['signup'])
+  }
+  navigatelogin() {
+    this.router.navigate(['login'])
   }
 }

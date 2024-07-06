@@ -4,7 +4,7 @@
     <form [formGroup]="loginForm" (ngSubmit)="login()">
       <div class="mb-3">
         <label for="username" class="form-label">Username</label>
-        <input type="text" class="form-control" id="username" formControlName="username"/>
+        <input type="text" class="form-control" id="username" name="username" formControlName="username"/>
         <div
           class="alert alert-danger"
           *ngIf="loginForm.controls['username'].invalid && loginForm.controls['username'].dirty"
@@ -19,6 +19,7 @@
           type="password"
           class="form-control"
           id="password"
+          name = "password"
           formControlName="password"
         />
         <div

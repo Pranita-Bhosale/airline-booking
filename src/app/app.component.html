@@ -1,40 +1,20 @@
 <!-- Bootstrap Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+<nav class="navbar navbar-expand-sm">
   <a class="navbar-brand nav_anchor">{{title}}</a>
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-bs-toggle="collapse"
-    data-bs-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-  >
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav me-auto">
       <li class="nav-item">
-        <a class="nav-link nav_anchor" aria-current="page">Home</a>
+        <a class="nav-link nav_anchor" aria-current="page" (click)="navigatesignup()">SignUp</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link nav_anchor" aria-current="page">Bookings</a>
+        <a class="nav-link nav_anchor" aria-current="page" (click)="navigatelogin()">Login</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link nav_anchor" aria-current="page">About</a>
-      </li>
-      <li>
-        <form class="d-flex">
-          <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-          &nbsp;&nbsp;<button class="btn btn-outline-danger" type="submit">Search</button>
-        </form>
-      </li>
+      
     </ul>
     <ul class="navbar-nav ms-auto ">
-      <li class="nav-item" *ngIf="username===undefined||username===null">
-        <a class="nav-link nav_anchor" aria-current="page" [routerLink]='["/login"]'>Login</a>
-      </li>
+
       <li class="nav-item dropdown" *ngIf="username!=undefined">
         <a class="nav-link dropdown-toggle nav_anchor" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           {{ username }}
@@ -43,14 +23,13 @@
           <li><a class="dropdown-item nav_anchor" href="#">Profile</a></li>
           <li><a class="dropdown-item nav_anchor" href="#">Change Password</a></li>
           <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item nav_anchor" (click)="logout()">Logout</a></li>
+          <li><a class="d opdown-item nav_anchor" (click)="logout()">Logout</a></li>
         </ul>
       </li>
     </ul>
   </div>
 </nav>
-
+  
 <div class="router_outlet">
   <router-outlet></router-outlet>
- 
 </div>

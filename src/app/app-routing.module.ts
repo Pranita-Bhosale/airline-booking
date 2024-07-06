@@ -6,6 +6,9 @@ import { UserhomeComponent } from './userhome/userhome.component';
 import { AdminhomeComponent } from './adminhome/adminhome.component';
 import { ApphomeComponent } from './apphome/apphome.component';
 import { Schedule } from './model/Schedule';
+import { AppComponent } from './app.component';
+import { ScheduleComponent } from './schedule/schedule.component';
+import { RouteComponent } from './route/route.component';
 
 const routes: Routes = [
   {
@@ -28,7 +31,15 @@ const routes: Routes = [
     path: "apphome",
     component: ApphomeComponent,
   },
-  
+  {
+    path: "schedule",
+    component: ScheduleComponent,
+  },
+  {
+    path: "route",
+    component: RouteComponent,
+  },
+
   {
     path: "**",
     redirectTo: "",
