@@ -17,6 +17,26 @@ export class ScheduleService {
     );
   }
 
+  fetchSchedule(source: string, destination: string, date: string): Observable<Schedule[]> | any {
+    let query = "source=" + source + "&destination=" + destination + "&departureDateTime=" + date;
+    return this.http.get<Schedule[]>(this.URL + "/getschedules?" + query).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  getAllschedules(): (Observable<Schedule[]> | any) {
+    return this.http.get<Schedule[]>(this.URL + "/getall-schedules").pipe(
+      catchError(this.handleError)
+    );
+  }
+
+
+  addSchedule(schedule: Schedule): (Observable<any> | any) {
+    return this.http.post(this.URL + "/add-schedule", schedule, { responseType: 'text' }).pipe(
+      catchError(this.handleError))
+  }
+
+
   handleError(err: HttpErrorResponse) {
     let errorMessage = '';
 
@@ -35,4 +55,5 @@ export class ScheduleService {
     }
     return throwError(() => errorMessage);
   }
+
 }

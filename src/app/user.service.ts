@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, tap, throwError } from 'rxjs';
 import { Login } from './model/Login';
-import { user } from './model/user';
+import { User } from './model/user';
 
 @Injectable({
   providedIn: 'root'
@@ -27,8 +27,8 @@ export class UserService {
     );
   }
 
-  addUserDetails(User: user): Observable<any> | any {
-    return this.http.post(this.URL + "/users", User, { responseType: 'text' }).pipe(
+  addUserDetails(user: User): Observable<any> | any {
+    return this.http.post(this.URL + "/users", user, { responseType: 'text' }).pipe(
       catchError(this.handleError));
   }
 
@@ -40,10 +40,10 @@ export class UserService {
       console.log("Unknown Error: " + err.statusText);
       errorMessage = "Unable to connect to the server";
     }
-    else {
-      console.log("Backend Error: " + err.error);
+    else if (err.status == 400) {
       errorMessage = err.error;
     }
+
     return throwError(() => errorMessage);
   }
 }

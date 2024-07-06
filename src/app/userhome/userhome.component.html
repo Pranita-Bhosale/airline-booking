@@ -1,7 +1,7 @@
-<div class="container">
-    <h2> User Information </h2>
+<div class="container" *ngIf="user!=null">
+    <h2> User profile: {{username}}</h2>
     <form [formGroup]="userhomeform" (ngSubmit)="addUserDetails()">
-    <div class="parent-1">
+     <div class="parent-1">
         <div class="form-group">
             <label for="title"><b>Title :</b></label>
             <select id="title" class="form-control" formControlName="title">
@@ -27,12 +27,12 @@
     <div class="parent-2">
         
     <div class="form-group">
-        <label for="email" class="form-lable"><b>Email :</b></label>
+        <label for="email" class="form-label"><b>Email :</b></label>
         <input type="text" id="email" class="form-control" placeholder="Enter Email">
     </div>
     
     <div class="form-group">
-        <label for="mobilenumber" class="form-lable"><b>Mobile No :</b></label>
+        <label for="mobilenumber" class="form-label"><b>Mobile No :</b></label>
         <input type="text" id="mobileNumber"class="form-control" placeholder="Enter Mobile Number">
     </div>
     
@@ -63,5 +63,11 @@
         class="btn btn-primary">
         Add Passenger
         </button></div>
+        <div *ngIf="errorMessage" class="text-danger">
+            <h5>{{errorMessage}}</h5>
+          </div>
+          <div *ngIf="successMessage" class="text-success">
+            <h5>{{successMessage}}</h5>
+          </div>
     </form>
  </div>

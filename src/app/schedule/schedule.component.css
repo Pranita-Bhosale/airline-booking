@@ -1,0 +1,27 @@
+.parent {
+    display: flex;
+    justify-content: space-around;
+    margin: 50px;
+    padding: 0px;
+    background-color: white;
+}
+
+.parent1 {
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.parent2 {
+    display: flex;
+    justify-content: space-around;
+    margin: 150px;
+}
+
+.container {
+    background-color: rgb(142, 32, 37);
+}
+
+.parent3 {
+    margin: 50px;
+}
