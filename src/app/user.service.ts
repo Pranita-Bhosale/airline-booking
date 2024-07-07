@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, tap, throwError } from 'rxjs';
 import { Login } from './model/Login';
-import { User } from './model/user';
+import { User } from './model/User';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +29,11 @@ export class UserService {
 
   addUserDetails(user: User): Observable<any> | any {
     return this.http.post(this.URL + "/users", user, { responseType: 'text' }).pipe(
+      catchError(this.handleError));
+  }
+  
+  getUserDetails(username: string): Observable<User>{
+    return this.http.get<User>(this.URL + "/users?username="+username).pipe(
       catchError(this.handleError));
   }
 

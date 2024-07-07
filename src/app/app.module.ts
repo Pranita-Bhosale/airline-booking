@@ -13,7 +13,7 @@ import { ApphomeComponent } from './apphome/apphome.component';
 import { ScheduleService } from './schedule.service';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { RouteComponent } from './route/route.component';
-
+import { BookingComponent } from './booking/booking.component';
 
 
 @NgModule({
@@ -26,6 +26,7 @@ import { RouteComponent } from './route/route.component';
     ApphomeComponent,
     ScheduleComponent,
     RouteComponent,
+    BookingComponent
 
   ],
   imports: [

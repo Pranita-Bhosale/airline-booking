@@ -42,4 +42,7 @@ export class AppComponent {
   navigatelogin() {
     this.router.navigate(['login'])
   }
+  userProfile(){
+    this.router.navigate(['userhome'], { queryParams: { profile: true } })
+  }
 }

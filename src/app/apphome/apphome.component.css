@@ -5,27 +5,28 @@
     padding: 30px;
 }
 
-.fromDiv {
+.source {
     border: solid;
     color: rgb(191, 71, 71);
-    padding: 50px;
+    padding: 20px;
     border-radius: 20px;
 }
 
-.toDiv {
+.destination {
     border: solid;
     color: rgb(191, 71, 71);
-    padding: 50px;
+    padding: 20px;
     border-radius: 20px;
 }
 
+.date {
+    border: solid;
+    color: rgb(191, 71, 71);
+    padding: 20px;
+    border-radius: 20px;
+}
 .searchbtn {
-
     display: flex;
     justify-content: center;
     background-color: rgb(7, 4, 4);
-}
-
-.btn {
-    margin-left: 600px;
 }

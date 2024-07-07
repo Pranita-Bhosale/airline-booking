@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../user.service';
-import { User } from '../model/user';
+import { User } from '../model/User';
 
 @Component({
   selector: 'app-userhome',
@@ -16,24 +16,29 @@ export class UserhomeComponent implements OnInit {
   ages: number[] = [];
   username: string;
   user: User = new User();
-
-  constructor(private formBuilder: FormBuilder, private router: Router, private userService: UserService) { }
+  profile: boolean;
+  email: boolean;
+  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router, private userService: UserService) { }
 
   ngOnInit(): void {
     this.username = localStorage.getItem("username");
     this.userhomeform = this.formBuilder.group({
       title: [''],
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      firstname: ['', Validators.required],
+      lastname: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      mobile: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
+      mobilenumber: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
       age: ['', [Validators.required]],
       gender: ['', Validators.required],
     });
-
     for (let i = 12; i <= 60; i++) {
       this.ages.push(i);
     }
+    this.route.queryParams.subscribe(params => {
+      this.profile = params['profile'];
+      console.log(this.profile);
+      this.getUserDetails();
+  });
 
   }
 
@@ -42,7 +47,7 @@ export class UserhomeComponent implements OnInit {
     this.user.firstName = this.userhomeform.value.firstname;
     this.user.lastName = this.userhomeform.value.lastname;
     this.user.email = this.userhomeform.value.email;
-    this.user.mobileNumber = this.userhomeform.value.mobileNumber;
+    this.user.mobileNumber = this.userhomeform.value.mobilenumber;
     this.user.gender = this.userhomeform.value.gender;
     this.user.age = this.userhomeform.value.age;
     this.user.username = this.username;
@@ -55,11 +60,33 @@ export class UserhomeComponent implements OnInit {
           this.errorMessage = error;
         }
       )
-    this.userhomeform.reset();
+  }
+
+  getUserDetails(){
+    this.userService.getUserDetails(this.username)
+    .subscribe(
+      (data) => {
+        this.user = data;
+        if(this.user.email==null)
+          this.email=false;
+        this.email=true;
+      },
+      (error) => {
+        this.errorMessage = error;
+      }
+    )
   }
 
   onSubmit() {
     console.log("first" + this.userhomeform.value.firstName);
     this.router.navigate(['/'])
   }
+
+getUserBooking(){
+  this.router.navigate(['/booking']);
+}
+appHome(){
+ this.router.navigate(['/apphome'])
+}
+
 }

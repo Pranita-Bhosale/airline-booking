@@ -34,3 +34,11 @@ h2 {
     justify-content: center;
     margin-top: 20px;
 }
+
+.userDetails {
+    border: solid;
+    background-color: #fff;
+    color: rgb(14, 14, 14);
+    padding: 20px;
+    border-radius: 20px;
+}
