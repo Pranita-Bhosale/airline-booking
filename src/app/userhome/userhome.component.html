@@ -1,4 +1,7 @@
-<div class="container" *ngIf="user!=null">
+<button (click)="getUserBooking()">My Bookings</button>
+<button (click)="appHome()">Home</button>
+<router-outlet></router-outlet>
+<div class="container" *ngIf="email==false || user.email==null">
     <h2> User profile: {{username}}</h2>
     <form [formGroup]="userhomeform" (ngSubmit)="addUserDetails()">
      <div class="parent-1">
@@ -8,18 +11,18 @@
                 <option value="" disabled>Title</option>
                 <option value="Miss">Ms</option>
                 <option value="Misses">Mrs</option>
-                <option value="mister">Mr</option>
+                <option value="Mister">Mr</option>
              </select>
         </div>
         
         <div class="form-group">
             <label for="firstname"><b>FirstName :</b></label>
-            <input type="text" id="firstname" class="form-control" placeholder="Enter First Name">
+            <input type="text" id="firstname" class="form-control" formControlName="firstname" placeholder="Enter First Name">
         </div>
     
         <div class="form-group">
             <label for="lastname"><b>LastName :</b></label>
-            <input type="text" id="lastname" class="form-control" placeholder="Enter Last Name">
+            <input type="text" id="lastname" class="form-control" formControlName="lastname" placeholder="Enter Last Name">
         </div>
         
     </div>
@@ -28,12 +31,12 @@
         
     <div class="form-group">
         <label for="email" class="form-label"><b>Email :</b></label>
-        <input type="text" id="email" class="form-control" placeholder="Enter Email">
+        <input type="text" id="email" class="form-control" formControlName="email" placeholder="Enter Email">
     </div>
     
     <div class="form-group">
         <label for="mobilenumber" class="form-label"><b>Mobile No :</b></label>
-        <input type="text" id="mobileNumber"class="form-control" placeholder="Enter Mobile Number">
+        <input type="text" id="mobilenumber"class="form-control" formControlName="mobilenumber" placeholder="Enter Mobile Number">
     </div>
     
     </div>
@@ -50,7 +53,7 @@
     
     <div class="form-group">
         <label for="gender"><b>Gender :</b></label>
-        <select name="gender" class="form-control" formControlName="gender">
+        <select id="gender" class="form-control" formControlName="gender">
          <option value="" disabled>Select Gender</option>
            <option value="male">Male</option>
            <option value="female">Female</option>
@@ -61,7 +64,7 @@
     
     <div class="btn"><button  type="submit"
         class="btn btn-primary">
-        Add Passenger
+        Save
         </button></div>
         <div *ngIf="errorMessage" class="text-danger">
             <h5>{{errorMessage}}</h5>
@@ -71,3 +74,16 @@
           </div>
     </form>
  </div>
+
+
+ <div *ngIf="user!=null && profile && email" class="userDetails">
+    <h4>User Details</h4>
+    <h6>Title:  {{user.title}}</h6>
+    <h6>First Name: {{user.firstName}}</h6>
+    <h6>Last Name: {{user.lastName}}</h6>
+    <h6>User Email: {{user.email}}</h6>
+    <h6>Age: {{user.age}}</h6>
+    <h6>Mobile Number: {{user.mobileNumber}}</h6>
+    <h6>Gender: {{user.gender}}</h6>
+  </div>
+  <router-outlet></router-outlet>

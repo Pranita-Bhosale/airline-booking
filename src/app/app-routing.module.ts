@@ -9,6 +9,7 @@ import { Schedule } from './model/Schedule';
 import { AppComponent } from './app.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { RouteComponent } from './route/route.component';
+import { BookingComponent } from './booking/booking.component';
 
 const routes: Routes = [
   {
@@ -39,7 +40,10 @@ const routes: Routes = [
     path: "route",
     component: RouteComponent,
   },
-
+  {
+    path: "booking",
+    component: BookingComponent,
+  },
   {
     path: "**",
     redirectTo: "",

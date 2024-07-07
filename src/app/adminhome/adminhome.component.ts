@@ -11,7 +11,21 @@ export class AdminhomeComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
 
-
+  bookings(){
+    this.router.navigate(['/booking']);
+  }
+  planes(){
+    this.router.navigate(['/plane']);
+  }
+  routes(){
+    this.router.navigate(['/route']);
+  }
+  schedules(){
+    this.router.navigate(['/schedule']);
+  }
+  users(){
+    this.router.navigate(['/userhome']);
   }
 }
