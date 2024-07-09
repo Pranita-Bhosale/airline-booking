@@ -10,8 +10,13 @@ import { AppComponent } from './app.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { RouteComponent } from './route/route.component';
 import { BookingComponent } from './booking/booking.component';
+import { PlaneComponent } from './plane/plane.component';
 
 const routes: Routes = [
+  {
+    path: "plane",
+    component: PlaneComponent,
+  },
   {
     path: "login",
     component: LoginComponent,
@@ -40,7 +45,7 @@ const routes: Routes = [
     path: "route",
     component: RouteComponent,
   },
-  {
+   {
     path: "booking",
     component: BookingComponent,
   },

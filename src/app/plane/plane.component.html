@@ -1,0 +1,34 @@
+f<!--Crate plane-->
+<h3 style="color:white"> Create plane</h3>
+<form [formGroup]="planeForm" (ngSubmit)="addPlane()">
+<div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <input type="text" class="form-control" id="name" name="name" formControlName="name"/>
+    <div
+      class="alert alert-danger"
+      *ngIf="planeForm.controls['name'].invalid && planeForm.controls['name'].dirty"
+    >
+      please enter a valid plane name.
+    </div>
+  </div>
+
+ <div class="mb-3">
+        <label for="seatCapacity" class="form-label">SeatCapacity</label>
+        <input type="seatCapacity" class="form-control" id="seatCapacity" name = "seatCapacity" formControlName="seatCapacity"/>
+        <div
+          class="alert alert-danger"
+          *ngIf="seatCapacity.controls['number'].invalid &&
+            seatCapacity.controls['number'].dirty"
+        >
+          please enter a valid number.
+        </div>
+      </div>
+      <button [disabled]="seatCapacity.invalid"  type="submit"  class="btn btn-primary"> save </button>
+      <div *ngIf="errorMessage" class="text-danger">
+        {{errorMessage}}
+      </div>
+</form>
+<!--BOOKING CANCEL SAME as for plane
+get all plane like schedule-->
+<!--view plane List-->
+<form [formGroup]="planeForm" (ngSubmit)="getAllPlane()"></form>

@@ -14,6 +14,7 @@ import { ScheduleService } from './schedule.service';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { RouteComponent } from './route/route.component';
 import { BookingComponent } from './booking/booking.component';
+import { PlaneComponent } from './plane/plane.component';
 
 
 @NgModule({
@@ -23,11 +24,11 @@ import { BookingComponent } from './booking/booking.component';
     SignupComponent,
     UserhomeComponent,
     AdminhomeComponent,
+    PlaneComponent,
     ApphomeComponent,
     ScheduleComponent,
     RouteComponent,
     BookingComponent
-
   ],
   imports: [
     BrowserModule,
