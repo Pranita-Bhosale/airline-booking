@@ -17,13 +17,12 @@ f<!--Crate plane-->
         <input type="seatCapacity" class="form-control" id="seatCapacity" name = "seatCapacity" formControlName="seatCapacity"/>
         <div
           class="alert alert-danger"
-          *ngIf="seatCapacity.controls['number'].invalid &&
-            seatCapacity.controls['number'].dirty"
+          *ngIf="planeForm.controls['seatCapacity'].invalid && planeForm.controls['seatCapacity'].dirty"
         >
           please enter a valid number.
         </div>
       </div>
-      <button [disabled]="seatCapacity.invalid"  type="submit"  class="btn btn-primary"> save </button>
+      <button [disabled]="planeForm.invalid"  type="submit"  class="btn btn-primary"> save </button>
       <div *ngIf="errorMessage" class="text-danger">
         {{errorMessage}}
       </div>
@@ -31,4 +30,34 @@ f<!--Crate plane-->
 <!--BOOKING CANCEL SAME as for plane
 get all plane like schedule-->
 <!--view plane List-->
-<form [formGroup]="planeForm" (ngSubmit)="getAllPlane()"></form>
+<form [formGroup]="planeForm" (ngSubmit)="getAllPlane()">
+  <div>
+    <button type="submit"
+       class="btn  btn-primary" (click)="getAllPlane()">View Plane List
+    </button>
+  </div>
+  <div *ngIf="plane.length!=0"  class="parent">
+    <table class="table table-striped">
+        <thead style="font-size: 25px;">
+            <tr>
+            <th>Plane Id</th>
+            <th>Name</th>
+            <th>seatCapacity</th>  
+            </tr>
+        </thead>
+        <tr *ngFor="let p of plane">
+          <td><h5>{{ p.id }}</h5></td>
+          <td><h5>{{ p.name | uppercase}}</h5></td>
+          <td><h5>{{ p.seatCapacity }}</h5></td>
+        </tr>
+        <div>
+          <div *ngIf="errorMessage" class="text-danger parent">
+            {{errorMessage}}
+          </div>
+          <div *ngIf="successMessage" class="text-info parent">
+            {{successMessage}}
+          </div>
+    </div>
+</table>
+</div>
+</form>

@@ -11,15 +11,12 @@ import { Plane } from '../model/Plane';
 })
 
 export class PlaneComponent implements OnInit {
-getAllPlane() {
-throw new Error('Method not implemented.');
-}
 
-seatCapacity: any;
+  seatCapacity: any;
 planeForm: FormGroup;
 errorMessage:string;
 successMessage:string;
-Plane: any[] = [];
+plane: Plane[] = [];
 
 constructor(private formbuilder: FormBuilder, private router: Router, private planeService: PlaneService) { }
 
@@ -47,7 +44,19 @@ addPlane() {
       }
     )
 }
+  getAllPlane() {
+  this.planeService.getAllplane()
+  .subscribe((data: any) => {
+    this.plane=data;
+  },
+    (error: any) => {
+      this.planeForm.reset();//
+      this.errorMessage = error;
+    }
+  )
   }
+
+}
 
     
 
