@@ -6,6 +6,7 @@ import { Plane} from './model/Plane';
   providedIn: 'root'
 })
 export class PlaneService {
+ 
   URL = "http://localhost:8080";
   constructor(private http:HttpClient) { }
 
@@ -14,6 +15,11 @@ export class PlaneService {
       catchError(this.handleError))
   }
 
+  getAllplane(): (Observable<any> | any) {
+    return this.http.get(this.URL + "/getall-plane").pipe(
+      catchError(this.handleError))
+  }
+  
 
   handleError(err: HttpErrorResponse) {
     let errorMessage = '';

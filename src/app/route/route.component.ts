@@ -21,7 +21,6 @@ export class RouteComponent implements OnInit {
 
   ngOnInit(): void {
     this.routeForm = this.formBuilder.group({
-      id: ['', Validators.required],
       source: ['', Validators.required],
       destination: ['', Validators.required],
       distance: ''
@@ -40,13 +39,13 @@ export class RouteComponent implements OnInit {
   }
 
   addRoute() {
-    let id = this.routeForm.value.id;
+
     let source = this.routeForm.value.source;
     let destination = this.routeForm.value.destination;
     let distance = this.routeForm.value.distance;
 
 
-    this.routeService.addRoute(new Route(id, source, destination, distance))
+    this.routeService.addRoute(new Route(source, destination, distance))
       .subscribe((data: any) => {
         this.routeForm.reset();//
         this.successMessage = data;

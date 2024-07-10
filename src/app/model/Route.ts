@@ -4,8 +4,7 @@ export class Route {
     destination: string;
     distance: string;
 
-    constructor(id: String, source: string, destination: string, distance: string) {
-        this.id = id;
+    constructor(source: string, destination: string, distance: string) {
         this.source = source;
         this.destination = destination;
         this.distance = distance;
