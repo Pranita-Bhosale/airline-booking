@@ -23,8 +23,11 @@ f<!--Crate plane-->
         </div>
       </div>
       <button [disabled]="planeForm.invalid"  type="submit"  class="btn btn-primary"> save </button>
-      <div *ngIf="errorMessage" class="text-danger">
+      <div *ngIf="errorMessage" class="text-danger parent">
         {{errorMessage}}
+      </div>
+      <div *ngIf="successMessage" class="text-info parent">
+        {{successMessage}}
       </div>
 </form>
 <!--BOOKING CANCEL SAME as for plane
@@ -51,12 +54,6 @@ get all plane like schedule-->
           <td><h5>{{ p.seatCapacity }}</h5></td>
         </tr>
         <div>
-          <div *ngIf="errorMessage" class="text-danger parent">
-            {{errorMessage}}
-          </div>
-          <div *ngIf="successMessage" class="text-info parent">
-            {{successMessage}}
-          </div>
     </div>
 </table>
 </div>

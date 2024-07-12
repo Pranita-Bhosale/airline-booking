@@ -29,7 +29,7 @@ export class ScheduleService {
       catchError(this.handleError)
     );
   }
-
+                     
 
   addSchedule(schedule: Schedule): (Observable<any> | any) {
     return this.http.post(this.URL + "/add-schedule", schedule, { responseType: 'text' }).pipe(

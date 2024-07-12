@@ -5,7 +5,34 @@
   <li class="nav-link nav_anchor" aria-current="page" (click)="planes()">Planes</li>
   <li class="nav-link nav_anchor" aria-current="page" (click)="routes()">Routes </li>
   <li class="nav-link nav_anchor" aria-current="page" (click)="schedules()">Schedules</li>
-  <li class="nav-link nav_anchor" aria-current="page" (click)="users()">Users </li>
-
+  <li class="nav-link nav_anchor" aria-current="page" (click)="getUsers()">Users </li>
 </div>
+<div *ngIf="users.length!=0"  class="parent">
+  <table class="table table-striped">
+      <thead style="font-size: 25px;">
+          <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Mobile No</th>
+          <th>Age</th>
+          <th>Gender</th>
+          <th>Username</th>
+          </tr>
+      </thead>
+      <tr *ngFor="let u of users">
+          <td>{{ u.firstName | uppercase }}</td>
+          <td><h6>{{ u.lastName | uppercase}}</h6></td>
+          <td><h6>{{ u.email }}</h6></td>
+          <td><h6>{{ u.mobileNumber }}</h6></td>
+          <td><h6>{{ u.age }}</h6></td>
+          <td><h6>{{ u.gender | uppercase}}</h6></td>
+          <td><h6>{{ u.username }}</h6></td>
+          <td><button class="btn btn-primary">Update</button></td>
+       </tr>
+       <div>
+      </div>
+  </table>
+</div>
+
   <router-outlet></router-outlet>
