@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="isOn" >
     <h1>Admin Dashboard</h1>
   
   <li class="nav-link nav_anchor" aria-current="page" (click)="bookings()">Bookings </li>
@@ -21,14 +21,13 @@
           </tr>
       </thead>
       <tr *ngFor="let u of users">
-          <td>{{ u.firstName | uppercase }}</td>
+          <td><h6>{{ u.firstName | uppercase }}</h6></td>
           <td><h6>{{ u.lastName | uppercase}}</h6></td>
           <td><h6>{{ u.email }}</h6></td>
           <td><h6>{{ u.mobileNumber }}</h6></td>
           <td><h6>{{ u.age }}</h6></td>
           <td><h6>{{ u.gender | uppercase}}</h6></td>
           <td><h6>{{ u.username }}</h6></td>
-          <td><button class="btn btn-primary">Update</button></td>
        </tr>
        <div>
       </div>
