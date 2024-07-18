@@ -4,24 +4,29 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../user.service';
 import { User } from '../model/User';
 
+
 @Component({
   selector: 'app-userhome',
   templateUrl: './userhome.component.html',
   styleUrls: ['./userhome.component.css']
 })
 export class UserhomeComponent implements OnInit {
-  userhomeform: FormGroup;
+ /* userhomeform: FormGroup;
   errorMessage: string;
   successMessage: string;
   ages: number[] = [];
   username: string;
   user: User = new User();
   profile: boolean;
-  email: boolean;
+  email: boolean;*/
+  user: User[] = [];
+  errorMessage: string | null = null;
+  successMessage: string = '';
+  username: string = '';
   constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router, private userService: UserService) { }
 
   ngOnInit(): void {
-    this.username = localStorage.getItem("username");
+    /*this.username = localStorage.getItem("username");
     this.userhomeform = this.formBuilder.group({
       title: [''],
       firstname: ['', Validators.required],
@@ -39,9 +44,9 @@ export class UserhomeComponent implements OnInit {
       console.log(this.profile);
       this.getUserDetails();
   });
-
+*/
   }
-
+/*
   addUserDetails() {
     this.user.title = this.userhomeform.value.title;
     this.user.firstName = this.userhomeform.value.firstname;
@@ -81,12 +86,46 @@ export class UserhomeComponent implements OnInit {
     console.log("first" + this.userhomeform.value.firstName);
     this.router.navigate(['/'])
   }
-
+*/
 getUserBooking(){
   this.router.navigate(['/booking']);
 }
+  
 appHome(){
  this.router.navigate(['/apphome'])
+}
+
+fetchUser() {
+  this.errorMessage = null;
+  this.successMessage = '';
+
+  this.userService.fetchUserByUsername(this.username).subscribe(
+    (data: User) => {
+      this.user = [data];
+      this.successMessage = 'User fetched successfully';
+    },
+    (error: any) => {
+      this.errorMessage = error;
+    }
+  );
+}
+
+getAllUsers() {
+  this.errorMessage = null;
+  this.successMessage = '';
+
+  this.userService.fetchAllUsers().subscribe(
+    (data: User[]) => {
+      this.user = data;
+
+      if (this.user.length === 0) {
+        this.successMessage = 'No User found';
+      }
+    },
+    (error: any) => {
+      this.errorMessage = error;
+    }
+  );
 }
 
 }

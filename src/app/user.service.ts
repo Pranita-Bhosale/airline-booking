@@ -37,18 +37,35 @@ export class UserService {
       catchError(this.handleError));
   }
 
+  fetchAllUsers():Observable<User[]> | any{
+    return this.http.get<User[]>(this.URL + "/all-users").pipe(
+      catchError(this.handleError)
+    )
+  }
+
+  fetchUserByUsername(username: string): Observable<User> {
+    return this.http.get<User>(`${this.URL}/getUserByUsername?username=${username}`).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   handleError(err: HttpErrorResponse) {
     console.log(err);
     let errorMessage = '';
 
-    if (err.statusText == "Unknown Error") {
+    if (err.statusText === "Unknown Error") {
       console.log("Unknown Error: " + err.statusText);
       errorMessage = "Unable to connect to the server";
-    }
-    else if (err.status == 400) {
+    } else if (err.status === 400) {
       errorMessage = err.error;
+    } else if (err.status === 404) {
+      errorMessage = "Resource not found";
+    } else if (err.status === 500) {
+      errorMessage = "Internal server error";
+    } else {
+      errorMessage = "An unexpected error occurred";
     }
 
-    return throwError(() => errorMessage);
+    return throwError(() => new Error(errorMessage));
   }
 }
