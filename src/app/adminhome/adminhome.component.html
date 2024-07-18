@@ -1,11 +1,13 @@
 <div class="container">
-    <h1>Admin Dashboard</h1>
-  
-  <li class="nav-link nav_anchor" aria-current="page" (click)="bookings()">Bookings </li>
-  <li class="nav-link nav_anchor" aria-current="page" (click)="planes()">Planes</li>
-  <li class="nav-link nav_anchor" aria-current="page" (click)="routes()">Routes </li>
-  <li class="nav-link nav_anchor" aria-current="page" (click)="schedules()">Schedules</li>
-  <li class="nav-link nav_anchor" aria-current="page" (click)="users()">Users </li>
+  <h1>Admin Dashboard</h1>
 
+  <ul class="nav">
+    <li class="nav-link nav_anchor" aria-current="page" (click)="bookings()">Bookings</li>
+    <li class="nav-link nav_anchor" aria-current="page" (click)="planes()">Planes</li>
+    <li class="nav-link nav_anchor" aria-current="page" (click)="routes()">Routes</li>
+    <li class="nav-link nav_anchor" aria-current="page" (click)="schedules()">Schedules</li>
+    <li class="nav-link nav_anchor" aria-current="page" (click)="users()">Users</li>
+  </ul>
 </div>
-  <router-outlet></router-outlet>
+
+<router-outlet></router-outlet>
