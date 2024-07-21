@@ -1,89 +1,54 @@
-<button (click)="getUserBooking()">My Bookings</button>
-<button (click)="appHome()">Home</button>
+<div class="row py-1 px-5 container-fluid" *ngIf="username==undefined">
+    <h4>
+        Welcome, you have come to the right place to book a domestic/internation flight. <br>
+        Here, you will get multiple options to choose a flight for your journey. <br>
+        Go ahead and start exploring by choosing one of the below! <br>
+        <br>
+        <br>
+    </h4>
+    <hr>
+    <br><br>
+    <div class="col-4">
+        <h5>Already a user? Login to book a flight...</h5>
+        <button type="button" class="btn btn-primary" (click)="navigateToChild('login')">
+            Login
+        </button>
+    </div>
+    <div class="col-4">
+        <h5>New user? Let's get started with signing up...</h5>
+        <button type="button" class="btn btn-primary" (click)="navigateToChild('signup')">
+            Sign Up
+        </button>
+    </div>
+    <div class="col-4">
+        <h5>Want to search flights without login?</h5>
+        <button type="button" class="btn btn-primary" (click)="navigateToChild('apphome')">
+            Search Flights
+        </button>
+        <br> <br> <br>
+    </div>
+</div>
+
+
+<div class="row py-1 px-5 container-fluid" *ngIf="username!=undefined">
+    <h4>
+        Welcome {{username}}, you have come to the right place to book a domestic/internation flight. <br>
+        Here, you will get multiple options to choose a flight for your journey. <br>
+        Go ahead and start exploring by choosing one of the below! <br>
+        <br>
+        <br>
+    </h4>
+    <div class="col-4" (click)="navigateToChild('apphome')"><a class="nav-link"><input type="radio"
+                [checked]="selectedTab=='apphome'" name="tab">
+            <h6>Search Flights</h6>
+        </a>
+    </div>
+    <div class="col-4" (click)="navigateToChild('booking')"><a class="nav-link"><input type="radio"
+                [checked]="selectedTab=='booking'" name="tab">
+            <h6>Bookings</h6>
+        </a>
+    </div>
+    <br><br>
+</div>
+
 <router-outlet></router-outlet>
-<div class="container" *ngIf="email==false || user.email==null">
-    <h2> User profile: {{username}}</h2>
-    <form [formGroup]="userhomeform" (ngSubmit)="addUserDetails()">
-     <div class="parent-1">
-        <div class="form-group">
-            <label for="title"><b>Title :</b></label>
-            <select id="title" class="form-control" formControlName="title">
-                <option value="" disabled>Title</option>
-                <option value="Miss">Ms</option>
-                <option value="Misses">Mrs</option>
-                <option value="Mister">Mr</option>
-             </select>
-        </div>
-        
-        <div class="form-group">
-            <label for="firstname"><b>FirstName :</b></label>
-            <input type="text" id="firstname" class="form-control" formControlName="firstname" placeholder="Enter First Name">
-        </div>
-    
-        <div class="form-group">
-            <label for="lastname"><b>LastName :</b></label>
-            <input type="text" id="lastname" class="form-control" formControlName="lastname" placeholder="Enter Last Name">
-        </div>
-        
-    </div>
-    <hr>
-    <div class="parent-2">
-        
-    <div class="form-group">
-        <label for="email" class="form-label"><b>Email :</b></label>
-        <input type="text" id="email" class="form-control" formControlName="email" placeholder="Enter Email">
-    </div>
-    
-    <div class="form-group">
-        <label for="mobilenumber" class="form-label"><b>Mobile No :</b></label>
-        <input type="text" id="mobilenumber"class="form-control" formControlName="mobilenumber" placeholder="Enter Mobile Number">
-    </div>
-    
-    </div>
-    <hr>
-    <div class="parent-3">
-        
-    <div class="form-group">
-        <label for="age"><b>Age :</b></label>
-        <select id="age" class="form-control" formControlName="age">
-            <option value="" disabled>Select Age</option>
-            <option *ngFor="let age of ages"[value]="age">{{ age }}</option>
-         </select>
-    </div>
-    
-    <div class="form-group">
-        <label for="gender"><b>Gender :</b></label>
-        <select id="gender" class="form-control" formControlName="gender">
-         <option value="" disabled>Select Gender</option>
-           <option value="male">Male</option>
-           <option value="female">Female</option>
-           <option value="other">Other</option>
-        </select>
-    </div>
-    </div>
-    
-    <div class="btn"><button  type="submit"
-        class="btn btn-primary">
-        Save
-        </button></div>
-        <div *ngIf="errorMessage" class="text-danger">
-            <h5>{{errorMessage}}</h5>
-          </div>
-          <div *ngIf="successMessage" class="text-success">
-            <h5>{{successMessage}}</h5>
-          </div>
-    </form>
- </div>
-
-
- <div *ngIf="user!=null && profile && email" class="userDetails">
-    <h4>User Details</h4>
-    <h6>Title:  {{user.title}}</h6>
-    <h6>First Name: {{user.firstName}}</h6>
-    <h6>Last Name: {{user.lastName}}</h6>
-    <h6>User Email: {{user.email}}</h6>
-    <h6>Age: {{user.age}}</h6>
-    <h6>Mobile Number: {{user.mobileNumber}}</h6>
-    <h6>Gender: {{user.gender}}</h6>
-  </div>
-  <router-outlet></router-outlet>

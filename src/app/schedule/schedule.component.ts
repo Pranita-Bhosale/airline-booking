@@ -14,7 +14,9 @@ export class ScheduleComponent implements OnInit {
   scheduleform: FormGroup;
   errorMessage: string;
   successMessage: string;
-  schedule: any[] = [];
+  allSchedule: any[] = [];
+  specificSchedule: any[] = [];
+
 
   constructor(private formbuilder: FormBuilder, private router: Router, private scheduleservice: ScheduleService) { }
 
@@ -38,8 +40,8 @@ export class ScheduleComponent implements OnInit {
   getAllSchedule() {
     this.scheduleservice.getAllschedules()
       .subscribe((data: any) => {
-        this.schedule = data
-        if (this.schedule.length == 0) {
+        this.allSchedule = data
+        if (this.allSchedule.length == 0) {
           this.successMessage = "No Flights available add schedule";
         }
 
@@ -59,9 +61,11 @@ export class ScheduleComponent implements OnInit {
     this.scheduleservice.addSchedule(new Schedule(source, destination, departureDateTime, arrivalDateTime, fare, planeId
     ))
       .subscribe((data: any) => {
+        this.scheduleform.reset();//
         this.successMessage = data;
       },
         (error: any) => {
+          this.scheduleform.reset();//
           this.errorMessage = error;
         }
       )
@@ -74,8 +78,8 @@ export class ScheduleComponent implements OnInit {
 
     this.scheduleservice.fetchSchedule(source, destination, departureDateTime).subscribe(
       (data: any) => {
-        this.schedule = data;
-        if (this.schedule.length == 0) {
+        this.specificSchedule = data;
+        if (this.specificSchedule.length == 0) {
           this.successMessage = "No Flights found for this route";
         }
       },

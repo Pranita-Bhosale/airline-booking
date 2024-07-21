@@ -1,4 +1,4 @@
-import { Component,  OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ScheduleService } from '../schedule.service';
@@ -11,7 +11,7 @@ import { Booking } from '../model/Booking';
   styleUrls: ['./apphome.component.css']
 })
 export class ApphomeComponent implements OnInit {
-
+  username: string;
   errorMessage: string;
   successMessage: string;
   apphomeForm: FormGroup;
@@ -23,6 +23,7 @@ export class ApphomeComponent implements OnInit {
   Cities: string[] = ["Pune", "Mumbai", "Sangali", "Solapur", "Satara", "Goa", "hyderabad", "Gudgaon"];
 
   ngOnInit() {
+    this.username = localStorage.getItem("username");
     this.apphomeForm = this.formBuilder.group({
       source: '',
       destination: '',
@@ -56,18 +57,18 @@ export class ApphomeComponent implements OnInit {
   getUserDetails() {
     this.router.navigate(['/userhome']);
   }
-  book(schedule){
+  book(schedule) {
     this.bookingService.bookPlane(new Booking(schedule.source, schedule.destination, schedule.arrivalDateTime, schedule.fare, localStorage.getItem("username"), schedule.planeId)).subscribe(
       (data: any) => {
         //this.booking = data;
-        window.alert("Booking created :"+ data);
+        window.alert("Booking created :" + data);
         this.router.navigate(['/booking']);
 
       },
-      (error: any) =>{
-       this.errorMessage= error;
+      (error: any) => {
+        this.errorMessage = error;
       });
   }
-  
+
 
 }

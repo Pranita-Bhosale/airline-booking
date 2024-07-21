@@ -1,4 +1,59 @@
-<!-- Part 1: add routes-->
+
+<!-- Part Base: route page-->
+ <div>
+  <div class="container mt-5">
+    <div clas="card">
+      <div class="card-header">
+        <h2 style="color: white;">Route Create
+          <a routerLink="/adminhome" class="btn btn-danger float-end">Back</a>
+        </h2>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="routeForm">
+          <div class="container">
+            <div class="parent1">
+              <div class="mb-3">
+                <label for="source" class="form-label"> 
+                <h2 style="color: white;">Source</h2>
+              </label>
+              <span class="alert alert-danger"
+                *ngIf="routeForm.controls['source'].invalid && routeForm.controls['source'].dirty"
+              >
+                please select source.
+              </span>   
+            <select id="source" class="form-control" formControlName="source">
+              <option *ngFor="let c of Cities" >{{ c }}</option>
+          </select>
+              </div>
+              <div class="mb-3">
+                <label for="destination" class="form-label"><h2 style="color: white;">Destination</h2></label>
+                   <select id="destination" class="form-control" formControlName="destination">
+                  <option *ngFor="let c of Cities" >{{ c }}</option>
+              </select>
+              </div>
+                  <label for="distance" class="form-label"> 
+                    <h2 style="color: white;">Distance: </h2>
+                    <input type="text" id="distance" formControlName="distance">
+                  </label>
+                  
+                </div>
+                <button class="btn btn-success" type="submit" (click)="addRoute()">Add Route</button>
+                <div *ngIf="errorMessage" class="text-info">
+                  <h3>{{errorMessage}}</h3>
+                </div>
+                <div *ngIf="successMessage" class="text-info">
+                  <h3>{{successMessage}}</h3>
+                </div>
+              </div>
+            </form>
+      </div>
+    </div>
+  </div>
+ </div>
+
+
+
+<!-- Part 1: add routes
 <h3 style="color: white;">Create  Route</h3>
 <form [formGroup]="routeForm">
     <div class="container">
@@ -7,9 +62,9 @@
           <label for="source" class="form-label"> 
           <h2 style="color: white;">Source</h2>
         </label>
-            <select id="source" class="form-control" formControlName="source">
-                <option *ngFor="let c of Cities" >{{ c }}</option>
-            </select>
+      <select id="source" class="form-control" formControlName="source">
+        <option *ngFor="let c of Cities" >{{ c }}</option>
+    </select>
         </div>
         <div class="mb-3">
           <label for="destination" class="form-label"><h2 style="color: white;">Destination</h2></label>
@@ -30,9 +85,10 @@
             <h3>{{successMessage}}</h3>
           </div>
         </div>
+      </form>
 
-<!-- Part 2: View all available routes-->
-<form [formGroup]="routeForm" (ngSubmit)="getallRoute()">
+ Part 2: View all available routes
+<form [formGroup]="routeForm">
     <div>
      <button type="submit"
         class="btn  btn-primary" (click)="getallRoute()">View Route List
@@ -53,10 +109,14 @@
              <td><h6>{{ r.source | uppercase}}</h6></td>
              <td><h6>{{ r.destination| uppercase }}</h6></td>
              <td>{{r.distance}}</td>
-             <td><button class="btn btn-primary">Update</button></td>
+             <td><button class="btn btn-primary" (click)="goToUpdateRoute()">Update</button></td>
           </tr>
      </table>
   </div>
- </form>
+ </form> -->
+
+ 
+
+
 
 
