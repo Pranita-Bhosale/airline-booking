@@ -54,9 +54,10 @@ const routes: Routes = [
 
     path: "update-route",
     component: UpdateRouteComponent,
-
+  },
+  {
     path: "forgot-password",
-    component: ForgotPasswordComponent,  
+    component: ForgotPasswordComponent, 
   },
   {
     path: "registration",
