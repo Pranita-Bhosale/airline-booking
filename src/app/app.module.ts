@@ -21,6 +21,7 @@ import { AppFooterComponent } from './app-footer/app-footer.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 
 import { PlaneComponent } from './plane/plane.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 
 @NgModule({
@@ -39,7 +40,9 @@ import { PlaneComponent } from './plane/plane.component';
     RegistrationComponent,
     AppHeaderComponent,
     AppFooterComponent,
-    UserProfileComponent
+    UserProfileComponent, 
+    ForgotPasswordComponent
+
 
   ],
   imports: [

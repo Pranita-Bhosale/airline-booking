@@ -11,6 +11,7 @@ import { UserService } from '../user.service';
 })
 export class LoginComponent implements OnInit {
 
+
   loginForm: FormGroup;
   errorMessage: string;
   //@Input() username: string;
@@ -22,14 +23,14 @@ export class LoginComponent implements OnInit {
       username: ['', [Validators.required, Validators.pattern("[A-Za-z0-9.]{6,15}")]],
       password: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(15)]]
     });
-
+      
     let username = localStorage.getItem("username");
     let role = localStorage.getItem("role");
     if (username != undefined && role != undefined) {
       this.router.navigate(['']);
     }
   }
-
+      
   login() {
     let username = this.loginForm.value.username;
     this.userService.userLogin(new Login(username, this.loginForm.value.password))
@@ -47,11 +48,13 @@ export class LoginComponent implements OnInit {
         (error) => {
           this.loginForm.reset();
           this.errorMessage = error;
+
         });
   }
 
   goToregustration() {
     this.router.navigate(['userhome']);
   }
+
 
 }

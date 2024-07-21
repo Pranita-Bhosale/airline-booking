@@ -11,6 +11,7 @@ import { BookingComponent } from './booking/booking.component';
 import { PlaneComponent } from './plane/plane.component';
 import { UpdateRouteComponent } from './update-route/update-route.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 const routes: Routes = [
   {
@@ -50,8 +51,12 @@ const routes: Routes = [
     component: BookingComponent,
   },
   {
+
     path: "update-route",
     component: UpdateRouteComponent,
+
+    path: "forgot-password",
+    component: ForgotPasswordComponent,  
   },
   {
     path: "registration",
@@ -62,6 +67,7 @@ const routes: Routes = [
     redirectTo: "",
     pathMatch: "full"
   }
+
 ];
 
 @NgModule({

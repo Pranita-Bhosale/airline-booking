@@ -3,11 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable, catchError, tap, throwError } from 'rxjs';
 import { Login } from './model/Login';
 import { User } from './model/User';
+import { ForgotPassword } from './model/ForgotPassword';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  
 
   URL = "http://localhost:8080";
 
@@ -26,6 +28,12 @@ export class UserService {
       catchError(this.handleError)
     );
   }
+  resetPassword(forgotPassword: ForgotPassword):Observable<any> | any {
+    return this.http.post(this.URL + "/passwordReset",forgotPassword,{ responseType:'text'}).pipe(
+      catchError(this.handleError)
+    );
+  }
+
 
   addUserDetails(user: User): Observable<any> | any {
     return this.http.post(this.URL + "/users", user, { responseType: 'text' }).pipe(
@@ -40,6 +48,7 @@ export class UserService {
     return this.http.get<User>(this.URL + "/all-users").pipe(
       catchError(this.handleError));
   }
+
 
   handleError(err: HttpErrorResponse) {
     console.log(err);
