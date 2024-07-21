@@ -1,9 +1,3 @@
 .parent {
     background-color: white;
 }
-
-.parent1 {
-    display: flex;
-    justify-content: space-around;
-
-}

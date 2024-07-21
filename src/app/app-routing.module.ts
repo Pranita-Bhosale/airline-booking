@@ -5,12 +5,12 @@ import { SignupComponent } from './signup/signup.component';
 import { UserhomeComponent } from './userhome/userhome.component';
 import { AdminhomeComponent } from './adminhome/adminhome.component';
 import { ApphomeComponent } from './apphome/apphome.component';
-import { Schedule } from './model/Schedule';
-import { AppComponent } from './app.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { RouteComponent } from './route/route.component';
 import { BookingComponent } from './booking/booking.component';
 import { PlaneComponent } from './plane/plane.component';
+import { UpdateRouteComponent } from './update-route/update-route.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 const routes: Routes = [
   {
@@ -45,9 +45,17 @@ const routes: Routes = [
     path: "route",
     component: RouteComponent,
   },
-   {
+  {
     path: "booking",
     component: BookingComponent,
+  },
+  {
+    path: "update-route",
+    component: UpdateRouteComponent,
+  },
+  {
+    path: "registration",
+    component: RegistrationComponent,
   },
   {
     path: "**",

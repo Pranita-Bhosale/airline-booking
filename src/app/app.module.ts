@@ -14,6 +14,12 @@ import { ScheduleService } from './schedule.service';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { RouteComponent } from './route/route.component';
 import { BookingComponent } from './booking/booking.component';
+import { UpdateRouteComponent } from './update-route/update-route.component';
+import { RegistrationComponent } from './registration/registration.component';
+import { AppHeaderComponent } from './app-header/app-header.component';
+import { AppFooterComponent } from './app-footer/app-footer.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+
 import { PlaneComponent } from './plane/plane.component';
 
 
@@ -28,7 +34,13 @@ import { PlaneComponent } from './plane/plane.component';
     ApphomeComponent,
     ScheduleComponent,
     RouteComponent,
-    BookingComponent
+    BookingComponent,
+    UpdateRouteComponent,
+    RegistrationComponent,
+    AppHeaderComponent,
+    AppFooterComponent,
+    UserProfileComponent
+
   ],
   imports: [
     BrowserModule,
@@ -38,6 +50,6 @@ import { PlaneComponent } from './plane/plane.component';
     HttpClientModule
   ],
   providers: [UserService, ScheduleService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppHeaderComponent, AppComponent, AppFooterComponent]
 })
 export class AppModule { }

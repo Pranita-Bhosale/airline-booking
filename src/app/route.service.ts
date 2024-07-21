@@ -22,7 +22,31 @@ export class RouteService {
       catchError(this.handleError))
   }
 
+  updateRoute(route: Route): Observable<any> {
+    return this.http.put(this.URL + "/update-route", route, { responseType: 'text' }).pipe(
+      catchError(this.handleError)
+    );
+  }
 
+  // getDistance(origin: string, destination: string): Promise<any> {
+  //   return new Promise((resolve, reject) => {
+  //     const service = new google.maps.DistanceMatrixService();
+  //     service.getDistanceMatrix(
+  //       {
+  //         origins: [origin],
+  //         destinations: [destination],
+  //         travelMode: google.maps.TravelMode.DRIVING
+  //       },
+  //       (response, status) => {
+  //         if (status === google.maps.DistanceMatrixStatus.OK) {
+  //           resolve(response);
+  //         } else {
+  //           reject(status);
+  //         }
+  //       }
+  //     );
+  //   });
+  // }
 
   handleError(err: HttpErrorResponse) {
     let errorMessage = '';

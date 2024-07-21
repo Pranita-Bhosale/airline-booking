@@ -26,10 +26,7 @@ export class LoginComponent implements OnInit {
     let username = localStorage.getItem("username");
     let role = localStorage.getItem("role");
     if (username != undefined && role != undefined) {
-      if (role == 'admin')
-        this.router.navigate(['adminhome']);
-      else if (role == 'user')
-        this.router.navigate(['userhome']);
+      this.router.navigate(['']);
     }
   }
 
@@ -41,16 +38,20 @@ export class LoginComponent implements OnInit {
           localStorage.setItem("username", username);
           if (data.isAdmin === "Y") {
             localStorage.setItem("role", "admin");
-            this.router.navigate(['adminhome']);
           } else {
             localStorage.setItem("role", "user");
-            this.router.navigate(['userhome']);
           }
+          this.router.navigate(['']);
+          window.location.reload();
         },
         (error) => {
           this.loginForm.reset();
           this.errorMessage = error;
-        }
-      )
+        });
   }
+
+  goToregustration() {
+    this.router.navigate(['userhome']);
+  }
+
 }

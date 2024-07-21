@@ -1,50 +1,44 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '../user.service';
-import { User } from '../model/User';
 
 @Component({
   selector: 'app-adminhome',
   templateUrl: './adminhome.component.html',
   styleUrls: ['./adminhome.component.css']
 })
-
-
 export class AdminhomeComponent implements OnInit {
-  public users: any[];
-  errorMessage: string;
-  isOn: boolean; 
-  constructor(private router: Router, private userService: UserService) { }
+  username: string;
+  role: string;
+  selectedTab: string;
+
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.isOn=true;
+    this.username = localStorage.getItem("username");
+    this.role = localStorage.getItem("role");
   }
 
-  bookings(){
-    this.isOn=false;
-    this.router.navigate(['/booking']);
-  }
-  planes(){
-    this.isOn=false;
-    this.router.navigate(['/plane']);
-  }
-  routes(){
-    this.isOn=false;
-    this.router.navigate(['/route']);
-  }
-  schedules(){
-    this.isOn=false;
-    this.router.navigate(['/schedule']);
-  }
-  getUsers(){
-    this.isOn=false;
-    this.userService.getAllUserDetails().subscribe(
-      (data: any) => {
-        this.users = data;
-      },
-      (error: any) => {
-        this.errorMessage = error;
-      }
-    )
+  navigateToChild(navigation) {
+
+    switch (navigation) {
+
+      case 'plane':
+        this.selectedTab = "plane";
+        this.router.navigate(['/plane']);
+        break;
+      case 'booking':
+        this.selectedTab = "booking";
+        this.router.navigate(['/booking']);
+        break;
+      case 'route':
+        this.selectedTab = "route";
+        this.router.navigate(['/route']);
+        break;
+      case 'schedule':
+        this.selectedTab = "schedule";
+        this.router.navigate(['/schedule']);
+        break;
+      default: this.router.navigate[''];
+    }
   }
 }

@@ -31,9 +31,9 @@ export class UserService {
     return this.http.post(this.URL + "/users", user, { responseType: 'text' }).pipe(
       catchError(this.handleError));
   }
-  
-  getUserDetails(username: string): Observable<User>{
-    return this.http.get<User>(this.URL + "/users?username="+username).pipe(
+
+  getUserDetails(username: string): Observable<User> {
+    return this.http.get<User>(this.URL + "/users?username=" + username).pipe(
       catchError(this.handleError));
   }
   getAllUserDetails(): Observable<User>{

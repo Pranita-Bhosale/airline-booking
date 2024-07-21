@@ -1,63 +1,73 @@
-<form [formGroup]="apphomeForm" (ngSubmit)="getSchedule()" >
-   <div class=" parent">
+<form [formGroup]="apphomeForm" (ngSubmit)="getSchedule()">
+  <div class=" parent">
     <div class="mb-2">
-      <label for="source" class="form-label"> 
-      <h2>Source</h2>
-    </label>
+      <label for="source" class="form-label">
+        <h2>Source</h2>
+      </label>
       <!-- <input type="text" class="form-control" id="source" formControlName="source"/> -->
-        <select id="source" class="source"  formControlName="source">
-            <option *ngFor="let c of Cities" >{{ c }}</option>
-        </select>
+      <select id="source" class="source" formControlName="source">
+        <option *ngFor="let c of Cities">{{ c }}</option>
+      </select>
     </div>
 
     <div class="mb-2">
-      <label for="destination" class="form-label"><h2>Destination</h2></label>
+      <label for="destination" class="form-label">
+        <h2>Destination</h2>
+      </label>
       <select id="destination" class="destination" formControlName="destination">
-        <option *ngFor="let c of Cities" >{{ c }}</option>
-    </select>
+        <option *ngFor="let c of Cities">{{ c }}</option>
+      </select>
     </div>
     <div class="mb-2">
-        <label for="date" class="form-label"><h2>Date</h2></label>
-        <input
-          type="date"
-          class="date"
-          id="date"
-          formControlName="date"
-        />
-      </div>
-      <button [disabled]="apphomeForm.invalid" [disabled]="apphomeForm.value.source === apphomeForm.value.destination" type="submit" class="searchbtn"
-      class="btn btn-primary">Search</button>
+      <label for="date" class="form-label">
+        <h2>Date</h2>
+      </label>
+      <input type="date" class="date" id="date" formControlName="date" />
     </div>
-    
-    <div *ngIf="errorMessage" class="text-danger parent">
-      {{errorMessage}}
-    </div>
-  </form>
-  <div *ngIf="successMessage" class="text-info parent">
-    {{successMessage}}
   </div>
-
-    <div *ngIf="Schedule.length!=0" class="table parent">
-    <table>  
-        <tr>
-            <th>Plane Id</th>
-            <th>Source</th>
-            <th>Destination</th>
-            <th>Departure Date</th>
-            <th>Arrival Date</th>
-            <th>Fare</th>
-            <th></th>
-        </tr>
-        <tr *ngFor="let s of Schedule">
-            <td>{{ s.planeId }}</td>
-            <td><h6>{{ s.source | uppercase}}</h6></td>
-            <td><h6>{{ s.destination| uppercase }}</h6></td>
-            <td><h4>{{ s.departureDateTime | date :'h:mm a' }}</h4>{{ s.departureDateTime | date :'dd MMM yyyy' }} </td>
-            <td><h4>{{ s.arrivalDateTime | date :'h:mm a' }}</h4>{{ s.arrivalDateTime | date :'dd MMM yyyy' }} </td>
-            <td><h6>{{ s.fare | currency:'INR'}}</h6></td>
-            <td><button  class="btn btn-primary" (click)="book(s)">Book</button></td>
-        </tr>
-    </table>
-
+  <div class="searchbtn">
+    <button [disabled]="apphomeForm.invalid" [disabled]="apphomeForm.value.source === apphomeForm.value.destination"
+      type="submit" class="btn btn-primary">Search</button>
   </div>
-  <router-outlet></router-outlet>
+  <div *ngIf="errorMessage" class="text-danger parent">
+    {{errorMessage}}
+  </div>
+</form>
+<div *ngIf="successMessage" class="text-info parent">
+  {{successMessage}}
+</div>
+
+<div *ngIf="Schedule.length!=0" class="table parent">
+  <table>
+    <tr>
+      <th>Plane Id</th>
+      <th>Source</th>
+      <th>Destination</th>
+      <th>Departure Date</th>
+      <th>Arrival Date</th>
+      <th>Fare</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let s of Schedule">
+      <td>{{ s.planeId }}</td>
+      <td>
+        <h6>{{ s.source | uppercase}}</h6>
+      </td>
+      <td>
+        <h6>{{ s.destination| uppercase }}</h6>
+      </td>
+      <td>
+        <h4>{{ s.departureDateTime | date :'h:mm a' }}</h4>{{ s.departureDateTime | date :'dd MMM yyyy' }}
+      </td>
+      <td>
+        <h4>{{ s.arrivalDateTime | date :'h:mm a' }}</h4>{{ s.arrivalDateTime | date :'dd MMM yyyy' }}
+      </td>
+      <td>
+        <h6>{{ s.fare | currency:'INR'}}</h6>
+      </td>
+      <td><button class="btn btn-primary" (click)="book(s)" [disabled]="username==undefined">Book</button></td>
+    </tr>
+  </table>
+
+</div>
+<router-outlet></router-outlet>

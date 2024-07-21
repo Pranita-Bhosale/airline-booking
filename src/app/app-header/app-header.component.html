@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-sm">
+    <a class="navbar-brand nav_anchor" [routerLink]='["/"]'>{{title}}</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+                <a class="nav-link nav_anchor" aria-current="page" href="#">Info</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link nav_anchor" aria-current="page" href="#">Help</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link nav_anchor" aria-current="page" href="#">About Us</a>
+            </li>
+        </ul>
+
+        <ul class="navbar-nav ms-auto ">
+
+            <li class="nav-item dropdown" *ngIf="username!=undefined">
+                <a class="nav-link dropdown-toggle nav_anchor" href="#" id="navbarDropdown" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    {{ username }}
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item nav_anchor" (click)="userProfile()">Profile</a></li>
+                    <li><a class="dropdown-item nav_anchor" href="#">Change Password</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item nav_anchor" (click)="logout()">Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>

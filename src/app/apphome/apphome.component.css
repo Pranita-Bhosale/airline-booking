@@ -1,7 +1,7 @@
 .parent {
     display: flex;
     justify-content: space-around;
-    margin: 450px, 400px;
+    margin: auto, 10%;
     padding: 30px;
 }
 
@@ -25,8 +25,8 @@
     padding: 20px;
     border-radius: 20px;
 }
+
 .searchbtn {
     display: flex;
     justify-content: center;
-    background-color: rgb(7, 4, 4);
 }
