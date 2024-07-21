@@ -18,23 +18,23 @@ constructor(private formBuilder: FormBuilder,private router:Router, private user
 
 
   ngOnInit(): void {
-    this.forgotPassword=this.formBuilder.group({
-     username: ['', [Validators.required, Validators.pattern("[A-Za-z0-9.]{6,15}")]],
-     newPassword: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(15)]],
-     mobileNo: ['', [Validators.required, Validators.pattern('/^[0-9]{1,10}$/.test(control.value')]]
-
+    this.forgotPassword = this.formBuilder.group({
+      username: ['', [Validators.required, Validators.pattern("[A-Za-z0-9.]{6,15}")]],
+      password: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(15)]],
+      mobileNo: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]]
     });
    
     }
   
 submit(){
   let username=this.forgotPassword.value.username;
-  let newPassword=this.forgotPassword.value.password;
+  let password=this.forgotPassword.value.password;
   let mobileNo=this.forgotPassword.value.mobileNo;
-  this.userService.resetPassword(new ForgotPassword(username, newPassword, mobileNo))
+  this.userService.resetPassword(new ForgotPassword(username, password, mobileNo))
   .subscribe(
     (data) => {
-      this.successMessage=data;
+      window.alert(data);
+      this.forgotPassword.reset();
       this.router.navigate['/login'];
     },
     (error) => {
