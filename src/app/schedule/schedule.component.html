@@ -2,57 +2,50 @@
   
   <!-- PART 1: Create  Schedule -->
      <h3 style="color: white;">Create  Schedule</h3>
-
+     
      <form [formGroup]="scheduleform" (ngSubmit)="addSchedule()">
       <div class="parent3" class="container">
         <div class="parent1">
           <div class="mb-3">
-            <label for="source" class="form-label"> 
-            <h2 style="color: white;">Source</h2>
-          </label>
+            <label for="source" class="form-label">  <h2 style="color: white;">Source</h2></label>
               <select id="source" class="form-control" formControlName="source">
                   <option *ngFor="let c of Cities" >{{ c }}</option>
               </select>
           </div>
+
           <div class="mb-3">
             <label for="destination" class="form-label"><h2 style="color: white;">Destination</h2></label>
                <select id="destination" class="form-control" formControlName="destination">
               <option *ngFor="let c of Cities" >{{ c }}</option>
           </select>
           </div>
+
           <div class="mb-3">
             <label for="d_date" class="form-label"><h2 style="color: white;">Departure Date and Time</h2></label>
-            <input
-              type="date"
-              class="form-control"
-              id="d_date"
-              formControlName="d_date"
-            />
+            <input type="date" class="form-control" id="d_date" formControlName="d_date"  />
             <input type="time" id="d_time" formControlName="d_time"/>
           </div>
+
           <div class="mb-3">
             <label for="a_date" class="form-label"><h2 style="color: white;">Arrival Date and Time</h2></label>
-            <input
-              type="date"
-              class="form-control"
-              id="a_date"
-              formControlName="a_date"
-            />
+            <input  type="date"class="form-control"id="a_date"  formControlName="a_date" />
             <input type="time" id="a_time" formControlName="a_time"/>
           </div>
+          
         </div>  
         <div class="parent2">
-          <label for="fare" class="form-label"> 
-            <h2 style="color: white;">Fare: </h2>
-            <input type="text" id="fare" formControlName="fare">
+   <label for="fare" class="form-label">  <h2 style="color: white;">Fare: </h2> <input type="text" id="fare" formControlName="fare">
           </label>
-          <label for="planeId" class="form-label"> 
-            <h2 style="color: white;">Plane Id: </h2>
-            <input type="text" id="planeId" formControlName="planeId">
+  <label for="planeId" class="form-label">  <h2 style="color: white;">Plane Id: </h2>  
+     <select id="planeId" class="form-control" formControlName="planeId">
+    <option *ngFor="let p of allPlane" >{{ p.id }}</option>
+  </select>
           </label>
           <button class="btn btn-success" type="submit">Add Schedule</button>
         </div>
       </div >
+
+
       <div *ngIf="errorMessage" class="text-info">
         <h3>{{errorMessage}}</h3>
       </div>
