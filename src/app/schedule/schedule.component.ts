@@ -3,10 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
 import { ScheduleService } from '../schedule.service';
 import { Schedule } from '../model/Schedule';
+import { PlaneService } from '../plane.service';
 
 @Component({
   selector: 'app-schedule',
-  templateUrl: './schedule.component.html',
+  templateUrl: './schedule.component.html',     
   styleUrls: ['./schedule.component.css']
 })
 
@@ -15,13 +16,16 @@ export class ScheduleComponent implements OnInit {
   errorMessage: string;
   successMessage: string;
   allSchedule: any[] = [];
+  allPlane:any[]=[];
   specificSchedule: any[] = [];
+navigateToChild: any;
+selectedTab: any;
 
 
-  constructor(private formbuilder: FormBuilder, private router: Router, private scheduleservice: ScheduleService) { }
+  constructor(private formbuilder: FormBuilder, private router: Router, private scheduleservice: ScheduleService,private planeService:PlaneService) { }
 
   Cities: string[] = ["Pune", "Mumbai", "Sangali", "Solapur", "Satara", "Goa", "hyderabad", "Gudgaon"];
-
+ 
   ngOnInit(): void {
     this.scheduleform = this.formbuilder.group({
       source: ['', Validators.required],
@@ -32,10 +36,20 @@ export class ScheduleComponent implements OnInit {
       a_time: ['', Validators.required],
       fare: ['', Validators.required],
       date: ['', Validators.required],
-      planeId: '',
+      planeId:'',
       id: ''
     })
+    this.getAllPlane();
   }
+getAllPlane(){
+  this.planeService.getAllplane()
+  .subscribe((data:any)=>{
+  this.allPlane=data
+  }
+)
+}
+
+
 
   getAllSchedule() {
     this.scheduleservice.getAllschedules()

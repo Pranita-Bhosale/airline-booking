@@ -11,7 +11,7 @@ export class ScheduleService {
   constructor(private http: HttpClient) { }
 
   getSchedule(source: string, destination: string, date: string): Observable<Schedule[]> | any {
-    let query = "source=" + source + "&destination=" + destination + "&departureDateTime=" + date;
+    let query = "source=" + source + "&destination=" + destination + "&departureDateTime=" + date ;
     return this.http.get<Schedule[]>(this.URL + "/getschedules?" + query).pipe(
       catchError(this.handleError)
     );

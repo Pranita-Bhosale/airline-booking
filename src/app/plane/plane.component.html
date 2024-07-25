@@ -1,9 +1,11 @@
 f<!--Crate plane-->
+
 <h3 style="color:white"> Create plane</h3>
+
 <form [formGroup]="planeForm" (ngSubmit)="addPlane()">
-<div class="mb-3">
+<div class="mb-3" style="height: 60%; width: 20%; margin: auto 10%">
     <label for="name" class="form-label">Name</label>
-    <input type="text" class="form-control" id="name" name="name" formControlName="name"/>
+    <input type="text" class="form-control" id="name" placeholder="airline name"name="name" formControlName="name"/>
     <div
       class="alert alert-danger"
       *ngIf="planeForm.controls['name'].invalid && planeForm.controls['name'].dirty"
@@ -12,9 +14,9 @@ f<!--Crate plane-->
     </div>
   </div>
 
- <div class="mb-3">
+ <div class="mb-3" style="height: 60%; width: 20%; margin: auto 10%">
         <label for="seatCapacity" class="form-label">SeatCapacity</label>
-        <input type="seatCapacity" class="form-control" id="seatCapacity" name = "seatCapacity" formControlName="seatCapacity"/>
+        <input type="seatCapacity" class="form-control" id="seatCapacity" placeholder="seatCapacity" name = "seatCapacity" formControlName="seatCapacity"/>
         <div
           class="alert alert-danger"
           *ngIf="planeForm.controls['seatCapacity'].invalid && planeForm.controls['seatCapacity'].dirty"
@@ -22,21 +24,22 @@ f<!--Crate plane-->
           please enter a valid number.
         </div>
       </div>
-      <button [disabled]="planeForm.invalid"  type="submit"  class="btn btn-primary"> save </button>
+      <button [disabled]="planeForm.invalid"  type="submit"  class="btn btn-primary"  style="height: 60%; width: 20%; margin: auto 10%"> save </button>
       <div *ngIf="errorMessage" class="text-danger parent">
         {{errorMessage}}
       </div>
       <div *ngIf="successMessage" class="text-info parent">
         {{successMessage}}
       </div>
+      
 </form>
 <!--BOOKING CANCEL SAME as for plane
 get all plane like schedule-->
 <!--view plane List-->
+<br>
 <form [formGroup]="planeForm" (ngSubmit)="getAllPlane()">
   <div>
-    <button type="submit"
-       class="btn  btn-primary" (click)="getAllPlane()">View Plane List
+    <button type="submit" class="btn  btn-primary" style="height: 60%; width: 20%; margin: auto 10%" (click)="getAllPlane()"> View Plane List
     </button>
   </div>
   <div *ngIf="plane.length!=0"  class="parent">
