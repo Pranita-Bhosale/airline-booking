@@ -1,0 +1,81 @@
+<!-- PART 2: view scedule by source destinationand departure date and time -->
+<h3 style="color: white;">Fetch Schedule:
+  <span *ngIf="errorMessage" class="text-danger text-align: center;">
+    {{errorMessage}}
+  </span>
+  <span *ngIf="successMessage" class="text-success">
+    {{successMessage}}
+  </span>
+</h3>
+<form [formGroup]="scheduleform" (ngSubmit)="fetchSchedule()">
+  <div class="parent3" class="container">
+    <div class="parent1">
+      <div class="mb-3">
+        <label for="source" class="form-label">
+          <h2 style="color: white;">Source</h2>
+        </label>
+        <select id="source" class="form-control" formControlName="source">
+          <option *ngFor="let c of Cities">{{ c }}</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="destination" class="form-label">
+          <h2 style="color: white;">Destination</h2>
+        </label>
+        <select id="destination" class="form-control" formControlName="destination">
+          <option *ngFor="let c of Cities">{{ c }}</option>
+        </select>
+      </div>
+      <div *ngIf="scheduleform.value.source === scheduleform.value.destination" class="text-danger">
+        <h3>Source and Destination cannot be same...</h3>
+      </div>
+      <div class="mb-3">
+        <label for="date" class="form-label">
+          <h2 style="color: white;">Date</h2>
+        </label>
+        <input type="date" class="form-control" id="date" formControlName="date" />
+      </div>
+      <div class="parent2">
+        <button type="submit"
+          [disabled]="scheduleform.invalid||scheduleform.value.source === scheduleform.value.destination"
+          class="btn btn-success" type="submit" (click)="fetchSchedule()">Fetch Schedule</button>
+      </div>
+    </div>
+    <div *ngIf="specificSchedule.length!=0" class="parent">
+      <table class="table table-striped">
+        <thead style="font-size: 25px;">
+          <tr>
+            <th>Schedule id</th>
+            <th>Plane Id</th>
+            <th>Source</th>
+            <th>Destination</th>
+            <th>Departure Date</th>
+            <th>Arrival Date</th>
+            <th>Fare</th>
+          </tr>
+        </thead>
+        <tr *ngFor="let s of specificSchedule">
+          <td>{{s.id}}</td>
+          <td>{{ s.planeId }}</td>
+          <td>
+            <h6>{{ s.source | uppercase}}</h6>
+          </td>
+          <td>
+            <h6>{{ s.destination| uppercase }}</h6>
+          </td>
+          <td>
+            <h4>{{ s.departureDateTime | date :'h:mm a' }}</h4>{{ s.departureDateTime | date :'dd MMM yyyy' }}
+          </td>
+          <td>
+            <h4>{{ s.arrivalDateTime | date :'h:mm a' }}</h4>{{ s.arrivalDateTime | date :'dd MMM yyyy' }}
+          </td>
+          <td>
+            <h6>{{ s.fare | currency:'INR'}}</h6>
+          </td>
+          <td><span style="cursor: pointer;" (click)="updateSchedule(s)">✏️</span></td>
+          <td><span style="cursor: pointer; margin-left: 10px;" (click)="deleteSchedule(s)">🗑️</span></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</form>

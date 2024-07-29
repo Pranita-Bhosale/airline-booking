@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ScheduleService } from '../schedule.service';
 import { BookingService } from '../booking.service';
 import { Booking } from '../model/Booking';
+import { min } from 'rxjs';
 
 @Component({
   selector: 'app-apphome',
@@ -16,18 +17,20 @@ export class ApphomeComponent implements OnInit {
   successMessage: string;
   apphomeForm: FormGroup;
   booking: Booking;
+  mindate: string;
   public Schedule: any[] = [];
 
   constructor(private formBuilder: FormBuilder, private router: Router, private scheduleservice: ScheduleService, private bookingService: BookingService) { }
 
-  Cities: string[] = ["Pune", "Mumbai", "Sangali", "Solapur", "Satara", "Goa", "hyderabad", "Gudgaon"];
+  Cities: string[] = ["Select City", "Pune", "Mumbai", "Sangali", "Solapur", "Satara", "Goa", "hyderabad", "Gudgaon"];
 
   ngOnInit() {
     this.username = localStorage.getItem("username");
+    this.setMinDate();
     this.apphomeForm = this.formBuilder.group({
-      source: '',
-      destination: '',
-      date: ''
+      source: ['', [Validators.required]],
+      destination: ['', [Validators.required]],
+      date: ['', [Validators.required]]
     });
 
   }
@@ -68,6 +71,14 @@ export class ApphomeComponent implements OnInit {
       (error: any) => {
         this.errorMessage = error;
       });
+  }
+
+  setMinDate() {
+    let now = new Date();
+    console.log(now);
+    let day = ("0" + now.getDate()).slice(-2);
+    let month = ("0" + (now.getMonth() + 1)).slice(-2);
+    this.mindate = now.getFullYear() + "-" + (month) + "-" + (day);//2024-07-21
   }
 
 

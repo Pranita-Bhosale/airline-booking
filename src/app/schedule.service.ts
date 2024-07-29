@@ -29,13 +29,24 @@ export class ScheduleService {
       catchError(this.handleError)
     );
   }
-                     
+
 
   addSchedule(schedule: Schedule): (Observable<any> | any) {
     return this.http.post(this.URL + "/add-schedule", schedule, { responseType: 'text' }).pipe(
       catchError(this.handleError))
   }
 
+  deleteSchedule(id: string): Observable<String[]> | any {
+    return this.http.delete(this.URL + "/delete-schedule?id=" + id, { responseType: 'text' }).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  updateSchedule(schedule: Schedule): Observable<any> {
+    return this.http.put(this.URL + "/update-schedule", schedule, { responseType: 'text' }).pipe(
+      catchError(this.handleError)
+    );
+  }
 
   handleError(err: HttpErrorResponse) {
     let errorMessage = '';

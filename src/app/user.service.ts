@@ -44,7 +44,7 @@ export class UserService {
     return this.http.get<User>(this.URL + "/users?username=" + username).pipe(
       catchError(this.handleError));
   }
-  getAllUserDetails(): Observable<User>{
+  getAllUserDetails(): Observable<User> {
     return this.http.get<User>(this.URL + "/all-users").pipe(
       catchError(this.handleError));
   }
