@@ -1,34 +1,43 @@
 <!-- Part 3: update available routes-->
-<h3 style="color: white;">Update Route</h3>
-<form [formGroup]="updaterouteForm" >
-    <div class="container">
-      <div class="parent1">
-        <h2> Route ID: {{ id }}</h2>
-        <div class="mb-3">
-          <label for="source" class="form-label"> 
+<h3 style="color: white;">Update Route :
+  <span *ngIf="errorMessage" class="text-danger text-align: center;">
+    {{errorMessage}}
+  </span>
+  <span *ngIf="successMessage" class="text-success">
+    {{successMessage}}
+  </span>
+</h3>
+<form [formGroup]="updaterouteForm">
+  <div class="container">
+    <div class="parent1">
+      <div class="mb-3">
+        <label for="source" class="form-label">
           <h2 style="color: white;">Source</h2>
         </label>
-      <select id="source" class="form-control" formControlName="source">
-        <option *ngFor="let c of Cities" >{{ c }} </option>
-    </select>
-        </div>
-        <div class="mb-3">
-          <label for="destination" class="form-label"><h2 style="color: white;">Destination</h2></label>
-             <select id="destination" class="form-control" formControlName="destination">
-            <option *ngFor="let c of Cities" >{{ c }}</option>
+        <select id="source" class="form-control" formControlName="source">
+          <option *ngFor="let c of Cities">{{ c }}</option>
         </select>
-        </div>
-            <label for="distance" class="form-label"> 
-              <h2 style="color: white;">Distance: </h2>
-              <input type="text" id="distance" formControlName="distance">
-            </label>
-            <button class="btn btn-success" [disabled]="updaterouteForm.invalid" [disabled]="updaterouteForm.value.source === updaterouteForm.value.destination"type="submit" (click)="updateRoute()">Update Route</button>
-          </div>
-          <div *ngIf="errorMessage" class="text-info">
-            <h3>{{errorMessage}}</h3>
-          </div>
-          <div *ngIf="successMessage" class="text-info">
-            <h3>{{successMessage}}</h3>
-          </div>
-        </div>
-      </form>
+      </div>
+      <div class="mb-3">
+        <label for="destination" class="form-label">
+          <h2 style="color: white;">Destination</h2>
+        </label>
+        <select id="destination" class="form-control" formControlName="destination">
+          <option *ngFor="let c of Cities">{{ c }}</option>
+        </select>
+      </div>
+      <label for="distance" class="form-label">
+        <h2 style="color: white;">Distance: </h2>
+      </label>
+      <input type="text" class="form-control" id="distance" name="distance" formControlName="distance">
+      <div class="alert alert-danger"
+        *ngIf="updaterouteForm.controls['distance'].invalid && updaterouteForm.controls['distance'].dirty">
+        Distance cannot be empty
+      </div>
+      <button class="btn btn-success"
+        [disabled]="updaterouteForm.invalid||updaterouteForm.value.source===updaterouteForm.value.destination"
+        type="submit" (click)="updateRoute()">Update</button>
+
+    </div>
+  </div>
+</form>

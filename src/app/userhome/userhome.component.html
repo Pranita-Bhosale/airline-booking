@@ -1,45 +1,50 @@
 
 <div class="row py-1 px-5 container-fluid" *ngIf="username==undefined">
-    <h4>
+    <h3 style="color: white; text-align: center;font-family: “Elido”;">
         Welcome, you have come to the right place to book a domestic/internation flight. <br>
         Here, you will get multiple options to choose a flight for your journey. <br>
         Go ahead and start exploring by choosing one of the below! <br>
         <br>
-        <br>
-    </h4>
+    </h3>
 
     <hr>
-    <br><br>
-    <div class="col-4">
-        <h5>Already a user? Login to book a flight...</h5>
-        <button type="button" class="btn btn-primary" (click)="navigateToChild('login')">
-            Login
-        </button>
-    </div>
-    <div class="col-4">
-        <h5>New user? Let's get started with signing up...</h5>
-        <button type="button" class="btn btn-primary" (click)="navigateToChild('signup')">
-            Sign Up
-        </button>
-    </div>
-    <div class="col-4">
-        <h5>Want to search flights without login?</h5>
-        <button type="button" class="btn btn-primary" (click)="navigateToChild('apphome')">
-            Search Flights
-        </button>
-        <br> <br> <br>
+    <br>
+    <div class="center-box" style=" margin: auto 40%">
+        <div class="col-4">
+            <h4 style="color: white;">Already a user? Login to book a flight...
+            </h4>
+            <button type="button" class="btn btn-primary" (click)="navigateToChild('login')">
+                Login
+            </button>
+        </div>
+        <br>
+        <div class="col-4">
+            <h4 style="color: white;">New user? Let's get started with signing
+                up...</h4>
+            <button type="button" class="btn btn-primary" (click)="navigateToChild('signup')">
+                Sign Up
+            </button>
+        </div>
+        <br>
+        <div class="col-4">
+            <h4 style="color: white;">Want to search flights without login?</h4>
+            <button type="button" class="btn btn-primary" (click)="navigateToChild('apphome')">
+                Search Flights
+            </button>
+            <br> <br> <br>
+        </div>
     </div>
 </div>
 
 
 <div class="row py-1 px-5 container-fluid" *ngIf="username!=undefined">
-    <h4>
+    <h3 style="color: white; text-align: center;font-family: “Elido”;">
         Welcome {{username}}, you have come to the right place to book a domestic/internation flight. <br>
         Here, you will get multiple options to choose a flight for your journey. <br>
         Go ahead and start exploring by choosing one of the below! <br>
         <br>
         <br>
-    </h4>
+    </h3>
     <div class="col-4" (click)="navigateToChild('apphome')"><a class="nav-link"><input type="radio"
                 [checked]="selectedTab=='apphome'" name="tab">
             <h6>Search Flights</h6>

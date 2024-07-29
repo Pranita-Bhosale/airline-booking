@@ -1,6 +1,6 @@
 .parent {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     margin: 50px;
     background-color: white;
 }
