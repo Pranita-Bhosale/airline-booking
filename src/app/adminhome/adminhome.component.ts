@@ -38,6 +38,7 @@ export class AdminhomeComponent implements OnInit {
         this.selectedTab = "schedule";
         this.router.navigate(['/schedule']);
         break;
+        
       default: this.router.navigate[''];
     }
   }

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../model/User';
 import { UserService } from '../user.service';
 
@@ -10,30 +9,32 @@ import { UserService } from '../user.service';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-
   userhomeform: FormGroup;
   errorMessage: string;
   successMessage: string;
   ages: number[] = [];
   username: string;
   user: User = new User();
-  profile: boolean;
-  email: boolean;
-  constructor(private formBuilder: FormBuilder, private router: Router, private userService: UserService) { }
+  profileExists: boolean = false;
+  isEditMode: boolean = false;
 
+  constructor(private formBuilder: FormBuilder, private userService: UserService) {}
 
   ngOnInit(): void {
+    this.username = localStorage.getItem("username") || '';
+    this.initProfileForm();
+    this.getUserDetails();
   }
 
   initProfileForm() {
     this.userhomeform = this.formBuilder.group({
       title: [''],
-      firstname: ['', Validators.required],
-      lastname: ['', Validators.required],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      mobilenumber: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
+      mobileNumber: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
       age: ['', [Validators.required]],
-      gender: ['', Validators.required],
+      gender: ['', Validators.required]
     });
     for (let i = 12; i <= 60; i++) {
       this.ages.push(i);
@@ -41,37 +42,59 @@ export class UserProfileComponent implements OnInit {
   }
 
   addUserDetails() {
-    this.user.title = this.userhomeform.value.title;
-    this.user.firstName = this.userhomeform.value.firstname;
-    this.user.lastName = this.userhomeform.value.lastname;
-    this.user.email = this.userhomeform.value.email;
-    this.user.mobileNumber = this.userhomeform.value.mobilenumber;
-    this.user.gender = this.userhomeform.value.gender;
-    this.user.age = this.userhomeform.value.age;
+    this.user = this.userhomeform.value;
     this.user.username = this.username;
-    this.userService.addUserDetails(this.user)
-      .subscribe(
-        (data) => {
-          this.successMessage = data;
-        },
-        (error) => {
-          this.errorMessage = error;
-        }
-      )
+    this.userService.addUserProfile(this.user).subscribe(
+      (data) => {
+        this.successMessage = 'User saved successfully';
+        this.errorMessage = '';
+        this.getUserDetails();
+      },
+      (error) => {
+        this.errorMessage = error;
+        this.successMessage = '';
+      }
+    );
+  }
+
+  updateUserDetails() {
+    this.user = this.userhomeform.value;
+    this.user.username = this.username;
+    this.userService.updateUserDetails(this.user).subscribe(
+      (data) => {
+        this.successMessage = 'User updated successfully';
+        this.errorMessage = '';
+        this.isEditMode = false;
+        this.getUserDetails();
+      },
+      (error) => {
+        this.errorMessage = error;
+        this.successMessage = '';
+      }
+    );
   }
 
   getUserDetails() {
-    this.userService.getUserDetails(this.username)
-      .subscribe(
-        (data) => {
+    this.userService.fetchUserByUsername(this.username).subscribe(
+      (data) => {
+        if (data) {
           this.user = data;
-          if (this.user.email == null)
-            this.email = false;
-          this.email = true;
-        },
-        (error) => {
-          this.errorMessage = error;
+          this.profileExists = true;
+          this.userhomeform.patchValue(this.user);
+        } else {
+          this.profileExists = false;
         }
-      )
+      },
+      (error) => {
+        this.errorMessage = '';
+      }
+    );
+  }
+
+  toggleEditMode() {
+    this.isEditMode = !this.isEditMode;
+    if (!this.isEditMode) {
+      this.userhomeform.patchValue(this.user); // Revert changes if edit mode is canceled
+    }
   }
 }

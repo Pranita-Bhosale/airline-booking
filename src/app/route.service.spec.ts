@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
+import { RouteService } from './route.service';
 
-import { RouteService } from './route/route.serviceee
 
 describe('RouteService', () => {
   let service: RouteService;

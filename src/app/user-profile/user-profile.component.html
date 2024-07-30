@@ -1,86 +1,85 @@
-<div class="container" *ngIf="email==false || user.email==null">
-    <h2> User profile: {{username}}</h2>
-    <form [formGroup]="userhomeform" (ngSubmit)="addUserDetails()">
-        <div class="parent-1">
-            <div class="form-group">
-                <label for="title"><b>Title :</b></label>
-                <select id="title" class="form-control" formControlName="title">
-                    <option value="" disabled>Title</option>
-                    <option value="Miss">Ms</option>
-                    <option value="Misses">Mrs</option>
-                    <option value="Mister">Mr</option>
-                </select>
-            </div>
+<div class="container">
+  <h2>User Profile: {{username}}</h2>
+  <form [formGroup]="userhomeform" *ngIf="profileExists && !isEditMode">
+    <div class="form-group">
+      <label for="title"><b>Title:</b></label>
+      <input type="text" id="title" class="form-control" formControlName="title" readonly>
+    </div>
+    <div class="form-group">
+      <label for="firstName"><b>First Name:</b></label>
+      <input type="text" id="firstName" class="form-control" formControlName="firstName" readonly>
+    </div>
+    <div class="form-group">
+      <label for="lastName"><b>Last Name:</b></label>
+      <input type="text" id="lastName" class="form-control" formControlName="lastName" readonly>
+    </div>
+    <div class="form-group">
+      <label for="email"><b>Email:</b></label>
+      <input type="text" id="email" class="form-control" formControlName="email" readonly>
+    </div>
+    <div class="form-group">
+      <label for="mobileNumber"><b>Mobile Number:</b></label>
+      <input type="text" id="mobileNumber" class="form-control" formControlName="mobileNumber" readonly>
+    </div>
+    <div class="form-group">
+      <label for="age"><b>Age:</b></label>
+      <input type="text" id="age" class="form-control" formControlName="age" readonly>
+    </div>
+    <div class="form-group">
+      <label for="gender"><b>Gender:</b></label>
+      <input type="text" id="gender" class="form-control" formControlName="gender" readonly>
+    </div>
+    <button type="button" class="btn btn-secondary" (click)="toggleEditMode()">Edit</button>
+  </form>
 
-            <div class="form-group">
-                <label for="firstname"><b>FirstName :</b></label>
-                <input type="text" id="firstname" class="form-control" formControlName="firstname"
-                    placeholder="Enter First Name">
-            </div>
-
-            <div class="form-group">
-                <label for="lastname"><b>LastName :</b></label>
-                <input type="text" id="lastname" class="form-control" formControlName="lastname"
-                    placeholder="Enter Last Name">
-            </div>
-
-        </div>
-        <hr>
-        <div class="parent-2">
-
-            <div class="form-group">
-                <label for="email" class="form-label"><b>Email :</b></label>
-                <input type="text" id="email" class="form-control" formControlName="email" placeholder="Enter Email">
-            </div>
-
-            <div class="form-group">
-                <label for="mobilenumber" class="form-label"><b>Mobile No :</b></label>
-                <input type="text" id="mobilenumber" class="form-control" formControlName="mobilenumber"
-                    placeholder="Enter Mobile Number">
-            </div>
-
-        </div>
-        <hr>
-        <div class="parent-3">
-
-            <div class="form-group">
-                <label for="age"><b>Age :</b></label>
-                <select id="age" class="form-control" formControlName="age">
-                    <option value="" disabled>Select Age</option>
-                    <option *ngFor="let age of ages" [value]="age">{{ age }}</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="gender"><b>Gender :</b></label>
-                <select id="gender" class="form-control" formControlName="gender">
-                    <option value="" disabled>Select Gender</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="other">Other</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="btn"><button type="submit" [disabled]="userhomeform.invalid" class="btn btn-primary">
-                Save
-            </button></div>
-        <div *ngIf="errorMessage" class="text-danger">
-            <h5>{{errorMessage}}</h5>
-        </div>
-        <div *ngIf="successMessage" class="text-success">
-            <h5>{{successMessage}}</h5>
-        </div>
-    </form>
-</div>
-
-<div *ngIf="user!=null && profile && email" class="userDetails">
-    <h4>User Details</h4>
-    <h6>Title: {{user.title}}</h6>
-    <h6>First Name: {{user.firstName}}</h6>
-    <h6>Last Name: {{user.lastName}}</h6>
-    <h6>User Email: {{user.email}}</h6>
-    <h6>Age: {{user.age}}</h6>
-    <h6>Mobile Number: {{user.mobileNumber}}</h6>
-    <h6>Gender: {{user.gender}}</h6>
+  <form [formGroup]="userhomeform" *ngIf="isEditMode || !profileExists">
+    <div class="form-group">
+      <label for="title"><b>Title:</b></label>
+      <select id="title" class="form-control" formControlName="title">
+        <option value="" disabled>Select Title</option>
+        <option value="Mr">Mr</option>
+        <option value="Ms">Ms</option>
+        <option value="Mrs">Mrs</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="firstName"><b>First Name:</b></label>
+      <input type="text" id="firstName" class="form-control" formControlName="firstName">
+    </div>
+    <div class="form-group">
+      <label for="lastName"><b>Last Name:</b></label>
+      <input type="text" id="lastName" class="form-control" formControlName="lastName">
+    </div>
+    <div class="form-group">
+      <label for="email"><b>Email:</b></label>
+      <input type="text" id="email" class="form-control" formControlName="email">
+    </div>
+    <div class="form-group">
+      <label for="mobileNumber"><b>Mobile Number:</b></label>
+      <input type="text" id="mobileNumber" class="form-control" formControlName="mobileNumber">
+    </div>
+    <div class="form-group">
+      <label for="age"><b>Age:</b></label>
+      <select id="age" class="form-control" formControlName="age">
+        <option value="" disabled>Select Age</option>
+        <option *ngFor="let age of ages" [value]="age">{{ age }}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="gender"><b>Gender:</b></label>
+      <select id="gender" class="form-control" formControlName="gender">
+        <option value="" disabled>Select Gender</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+    <div class="btn-group">
+      <button *ngIf="!profileExists" type="button" [disabled]="userhomeform.invalid" class="btn btn-primary" (click)="addUserDetails()">Save</button>
+      <button *ngIf="profileExists" type="button" [disabled]="userhomeform.invalid" class="btn btn-primary" (click)="updateUserDetails()">Update</button>
+      <button type="button" class="btn btn-secondary" (click)="toggleEditMode()">Cancel</button>
+    </div>
+  </form>
+  <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
 </div>

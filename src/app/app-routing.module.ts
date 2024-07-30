@@ -12,6 +12,8 @@ import { PlaneComponent } from './plane/plane.component';
 import { UpdateRouteComponent } from './update-route/update-route.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const routes: Routes = [
   {
@@ -62,6 +64,15 @@ const routes: Routes = [
   {
     path: "registration",
     component: RegistrationComponent,
+  },
+
+  {
+    path: "change-password",
+    component: ChangePasswordComponent,
+  },
+  {
+    path: "user-profile",
+    component: UserProfileComponent,
   },
   {
     path: "**",

@@ -1,0 +1,27 @@
+/* Add your styling here */
+form div {
+  margin-bottom: 1em;
+}
+
+label {
+  margin-right: 1em;
+  color: aliceblue;
+}
+
+input, select {
+  padding: 0.5em;
+  margin-left: 1em;
+}
+
+button {
+  margin-right: 1em;
+  padding: 0.5em 1em;
+}
+
+p {
+  color: green;
+}
+
+p.error {
+  color: red;
+}

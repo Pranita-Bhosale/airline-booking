@@ -22,6 +22,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 
 import { PlaneComponent } from './plane/plane.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+
 
 
 @NgModule({
@@ -41,7 +43,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     AppHeaderComponent,
     AppFooterComponent,
     UserProfileComponent, 
-    ForgotPasswordComponent
+    ForgotPasswordComponent, ChangePasswordComponent
 
 
   ],
