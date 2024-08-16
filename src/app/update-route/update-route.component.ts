@@ -13,32 +13,33 @@ export class UpdateRouteComponent implements OnInit {
   updaterouteForm: FormGroup;
   errorMessage: string;
   successMessage: string;
-  Route: any[] = [];
-  Cities: string[] = ["Select City", "Pune", "Mumbai", "Sangali", "Solapur", "Satara", "Goa", "hyderabad", "Gudgaon"];
-  id: string;
-
-
-  constructor(private formBuilder: FormBuilder, private router: Router, private routeService: RouteService, private activatedRoute: ActivatedRoute) { }
+  temp: Route;
+  Cities: any[] = [];
+  constructor(private formBuilder: FormBuilder, private router: Router, private routeService: RouteService, private activatedRoute: ActivatedRoute) {
+    this.temp = this.router.getCurrentNavigation().extras.state['data'];
+    console.log(this.temp);
+  }
 
   ngOnInit(): void {
-    this.id = localStorage.getItem("id");
+    this.populatecities();
     this.updaterouteForm = this.formBuilder.group({
-      source: ['', Validators.required],
-      destination: ['', Validators.required],
-      distance: ['', Validators.required, Validators.pattern("[0-9.]{3,5}")]
+      source: [this.temp.source, [Validators.required]],
+      destination: [this.temp.destination, [Validators.required]],
+      distance: [this.temp.distance, [Validators.required, Validators.pattern("[0-9.]{3,5}")]]
     })
   }
 
   updateRoute() {
-    let source = this.updaterouteForm.value.source;
-    let destination = this.updaterouteForm.value.destination;
-    let distance = this.updaterouteForm.value.distance;
+    this.temp.source = this.updaterouteForm.value.source;
+    this.temp.destination = this.updaterouteForm.value.destination;
+    this.temp.distance = this.updaterouteForm.value.distance;
 
-    this.routeService.updateRoute(new Route(source, destination, distance))
+    this.routeService.updateRoute(this.temp)
       .subscribe((data: any) => {
         this.updaterouteForm.reset();//
         this.successMessage = data;
       },
+
         (error: any) => {
           this.updaterouteForm.reset();//
           this.errorMessage = error;
@@ -46,5 +47,14 @@ export class UpdateRouteComponent implements OnInit {
       )
   }
 
-
+  populatecities() {
+    this.routeService.getAllCities()
+      .subscribe((data: any) => {
+        this.Cities = data;
+      },
+        (error: any) => {
+          this.errorMessage = error;
+        }
+      )
+  }
 }

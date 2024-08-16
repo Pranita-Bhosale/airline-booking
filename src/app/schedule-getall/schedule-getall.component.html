@@ -1,0 +1,47 @@
+<div *ngIf="allSchedule.length!=0" class="parent">
+  <table class="table table-striped">
+    <thead style="font-size: 25px;">
+      <tr>
+        <th>Schedule id</th>
+        <th>Plane Id</th>
+        <th>Source</th>
+        <th>Destination</th>
+        <th>Departure Date</th>
+        <th>Arrival Date</th>
+        <th>Fare</th>
+      </tr>
+    </thead>
+    <tr *ngFor="let s of allSchedule">
+      <td>{{s.id}}</td>
+      <td>{{ s.planeId }}</td>
+      <td>
+        <h6>{{ s.source | uppercase}}</h6>
+      </td>
+      <td>
+        <h6>{{ s.destination| uppercase }}</h6>
+      </td>
+      <td>
+        <h4>{{ s.departureDateTime | date :'h:mm a' }}</h4>{{ s.departureDateTime | date :'dd MMM yyyy' }}
+      </td>
+      <td>
+        <h4>{{ s.arrivalDateTime | date :'h:mm a' }}</h4>{{ s.arrivalDateTime | date :'dd MMM yyyy' }}
+      </td>
+      <td>
+        <h6>{{ s.fare | currency:'INR'}}</h6>
+      </td>
+      <td><span style="cursor: pointer;" (click)="updateSchedule(s)">✏️</span></td>
+      <td><span style="cursor: pointer; margin-left: 10px;" (click)="deleteSchedule(s)">🗑️</span></td>
+    </tr>
+    <div>
+      <div *ngIf="errorMessage" class="text-danger parent">
+        {{errorMessage}}
+      </div>
+      <div *ngIf="errorMessage" class="text-danger parent">
+        {{errorMessage}}
+      </div>
+      <div *ngIf="successMessage" class="text-info parent">
+        {{successMessage}}
+      </div>
+    </div>
+  </table>
+</div>

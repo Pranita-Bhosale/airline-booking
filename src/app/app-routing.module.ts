@@ -11,6 +11,12 @@ import { BookingComponent } from './booking/booking.component';
 import { PlaneComponent } from './plane/plane.component';
 import { UpdateRouteComponent } from './update-route/update-route.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { RouteCreateComponent } from './route-create/route-create.component';
+import { RouteGetallComponent } from './route-getall/route-getall.component';
+import { ScheduleCreateComponent } from './schedule-create/schedule-create.component';
+import { ScheduleGetallComponent } from './schedule-getall/schedule-getall.component';
+import { ScheduleFetchComponent } from './schedule-fetch/schedule-fetch.component';
+import { ScheduleUpdateComponent } from './schedule-update/schedule-update.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
@@ -43,23 +49,50 @@ const routes: Routes = [
   {
     path: "schedule",
     component: ScheduleComponent,
+    children: [
+      {
+        path: "create-schedule",
+        component: ScheduleCreateComponent
+      },
+      {
+        path: "getall-schedule",
+        component: ScheduleGetallComponent
+      },
+      {
+        path: "fetch-schedule",
+        component: ScheduleFetchComponent,
+      },
+      {
+        path: "update-schedule",
+        component: ScheduleUpdateComponent,
+      }
+    ]
   },
   {
     path: "route",
     component: RouteComponent,
+    children: [
+      {
+        path: "create-route",
+        component: RouteCreateComponent
+      },
+      {
+        path: "getall-route",
+        component: RouteGetallComponent
+      },
+      {
+        path: "update-route",
+        component: UpdateRouteComponent,
+      }
+    ]
   },
   {
     path: "booking",
     component: BookingComponent,
   },
   {
-
-    path: "update-route",
-    component: UpdateRouteComponent,
-  },
-  {
     path: "forgot-password",
-    component: ForgotPasswordComponent, 
+    component: ForgotPasswordComponent,
   },
   {
     path: "registration",
@@ -79,7 +112,6 @@ const routes: Routes = [
     redirectTo: "",
     pathMatch: "full"
   }
-
 ];
 
 @NgModule({

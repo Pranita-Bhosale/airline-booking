@@ -18,11 +18,20 @@ import { UpdateRouteComponent } from './update-route/update-route.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { AppHeaderComponent } from './app-header/app-header.component';
 import { AppFooterComponent } from './app-footer/app-footer.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
 
 import { PlaneComponent } from './plane/plane.component';
+import { RouteCreateComponent } from './route-create/route-create.component';
+import { RouteGetallComponent } from './route-getall/route-getall.component';
+import { ScheduleCreateComponent } from './schedule-create/schedule-create.component';
+import { ScheduleGetallComponent } from './schedule-getall/schedule-getall.component';
+import { ScheduleFetchComponent } from './schedule-fetch/schedule-fetch.component';
+import { ScheduleUpdateComponent } from './schedule-update/schedule-update.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+
 import { ChangePasswordComponent } from './change-password/change-password.component';
+
+
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 
@@ -42,9 +51,20 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     RegistrationComponent,
     AppHeaderComponent,
     AppFooterComponent,
+
     UserProfileComponent, 
     ForgotPasswordComponent, ChangePasswordComponent
 
+
+
+    RouteCreateComponent,
+    RouteGetallComponent,
+    ScheduleCreateComponent,
+    ScheduleGetallComponent,
+    ScheduleFetchComponent,
+    ScheduleUpdateComponent,
+    UserProfileComponent,
+    ForgotPasswordComponent
 
   ],
   imports: [

@@ -30,3 +30,7 @@
     display: flex;
     justify-content: center;
 }
+
+.table parent {
+    background-color: white;
+}

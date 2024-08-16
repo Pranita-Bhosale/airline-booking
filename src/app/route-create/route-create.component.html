@@ -1,0 +1,57 @@
+<!-- Part Base: create route page-->
+<div>
+    <div class="container mt-5">
+        <div clas="card">
+            <div class="card-header">
+                <h2 style="color: white;">Create Route:
+                    <span *ngIf="errorMessage" class="text-danger text-align: center;">
+                        {{errorMessage}}
+                    </span>
+                    <span *ngIf="successMessage" class="text-success">
+                        {{successMessage}}
+                    </span>
+                </h2>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="routeForm">
+                    <div class="container">
+                        <div class="parent1">
+                            <div class="mb-3">
+                                <label for="source" class="form-label">
+                                    <h2 style="color: white;">Source</h2>
+                                </label>
+                                <select id="source" class="form-control" formControlName="source">
+                                    <option *ngFor="let c of Cities">{{ c }}</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="destination" class="form-label">
+                                    <h2 style="color: white;">Destination</h2>
+                                </label>
+                                <select id="destination" class="form-control" formControlName="destination">
+                                    <option *ngFor="let c of Cities">{{ c }}</option>
+                                </select>
+                            </div>
+                            <label for="distance" class="form-label">
+                                <h2 style="color: white;">Distance: </h2>
+                            </label>
+                            <input type="text" class="form-control" id="distance" name="distance"
+                                formControlName="distance">
+                            <div class="alert alert-danger"
+                                *ngIf="routeForm.controls['distance'].invalid && routeForm.controls['distance'].dirty">
+                                Distance cannot be below 100KM
+                            </div>
+
+                        </div>
+                        <button class="btn btn-success"
+                            [disabled]="routeForm.invalid||routeForm.value.source===routeForm.value.destination"
+                            type="submit" (click)="addRoute()">
+                            Add
+                            Route</button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

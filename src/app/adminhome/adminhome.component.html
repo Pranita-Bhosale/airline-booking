@@ -1,12 +1,12 @@
 <div class="row py-1 px-5 container-fluid" *ngIf="username!=undefined">
-  <h2>Admin Dashboard</h2>
-  <h4>
-    Welcome {{username}}, you have come to the right place to book a domestic/internation flight. <br>
+  <h2 style="color: white; font-family: “Elido”;">Admin Dashboard</h2>
+  <h3 style="color: white; text-align: center;font-family: “Elido”;">
+    Welcome Admin, you have come to the right place to book a domestic/internation flight. <br>
     Here, you will get multiple options to choose a flight for your journey. <br>
     Go ahead and start exploring by choosing one of the below! <br>
     <br>
     <br>
-  </h4>
+  </h3>
   <div class="col-2" (click)="navigateToChild('booking')"><a class="nav-link"><input type="radio"
         [checked]="selectedTab=='booking'" name="tab">Bookings
     </a>

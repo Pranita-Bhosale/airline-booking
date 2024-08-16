@@ -28,6 +28,18 @@ export class RouteService {
     );
   }
 
+  deleteRoute(id: string): Observable<String[]> | any {
+    return this.http.delete(this.URL + "/delete-route?id=" + id, { responseType: 'text' }).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  getAllCities(): Observable<String[]> | any {
+    return this.http.get(this.URL + "/get-allCities").pipe(
+      catchError(this.handleError)
+    );
+  }
+
   // getDistance(origin: string, destination: string): Promise<any> {
   //   return new Promise((resolve, reject) => {
   //     const service = new google.maps.DistanceMatrixService();

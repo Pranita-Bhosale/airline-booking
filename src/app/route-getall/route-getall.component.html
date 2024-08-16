@@ -1,0 +1,25 @@
+<!--Part 2: View all available routes-->
+<div *ngIf="Route.length!=0" class="parent">
+    <table class="table table-striped">
+        <thead style="font-size: 25px;">
+            <tr>
+                <th>Route Id</th>
+                <th>Source</th>
+                <th>Destination</th>
+                <th>Distance</th>
+            </tr>
+        </thead>
+        <tr *ngFor="let r of Route">
+            <td>{{ r.id }}</td>
+            <td>
+                <h6>{{ r.source | uppercase}}</h6>
+            </td>
+            <td>
+                <h6>{{ r.destination| uppercase }}</h6>
+            </td>
+            <td>{{r.distance}}</td>
+            <td><span style="cursor: pointer;" (click)="updateRoute(r)">✏️</span></td>
+            <td><span style="cursor: pointer; margin-left: 10px;" (click)="deleteRoute(r)">🗑️</span></td>
+        </tr>
+    </table>
+</div>

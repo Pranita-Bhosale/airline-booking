@@ -2,7 +2,7 @@
   <div class=" parent">
     <div class="mb-2">
       <label for="source" class="form-label">
-        <h2>Source</h2>
+        <h2 style="color: white;">Source</h2>
       </label>
       <!-- <input type="text" class="form-control" id="source" formControlName="source"/> -->
       <select id="source" class="source" formControlName="source">
@@ -12,7 +12,7 @@
 
     <div class="mb-2">
       <label for="destination" class="form-label">
-        <h2>Destination</h2>
+        <h2 style="color: white;">Destination</h2>
       </label>
       <select id="destination" class="destination" formControlName="destination">
         <option *ngFor="let c of Cities">{{ c }}</option>
@@ -20,9 +20,9 @@
     </div>
     <div class="mb-2">
       <label for="date" class="form-label">
-        <h2>Date</h2>
+        <h2 style="color: white;">Date</h2>
       </label>
-      <input type="date" class="date" id="date" formControlName="date" />
+      <input type="date" class="date" id="date" formControlName="date" [min]="mindate" />
     </div>
   </div>
   <div class="searchbtn">
