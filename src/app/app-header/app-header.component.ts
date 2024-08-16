@@ -33,6 +33,9 @@ export class AppHeaderComponent implements OnInit {
     this.router.navigate(['login'])
   }
   userProfile() {
-    this.router.navigate(['userhome'], { queryParams: { profile: true } })
+    this.router.navigate(['user-profile'], { queryParams: { profile: true } })
+  }
+  navigateChangePassword() {
+    this.router.navigate(['change-password'])
   }
 }

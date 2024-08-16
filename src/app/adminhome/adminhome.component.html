@@ -23,6 +23,10 @@
         [checked]="selectedTab=='plane'" name="tab">Planes
     </a>
   </div>
+  <div class="col-2" (click)="navigateToChild('user')"><a class="nav-link"><input type="radio"
+        [checked]="selectedTab=='user'" name="tab">Users
+  </a>
+  </div>
   <br><br>
 </div>
 <router-outlet></router-outlet>

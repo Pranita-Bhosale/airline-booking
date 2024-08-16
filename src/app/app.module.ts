@@ -27,7 +27,12 @@ import { ScheduleGetallComponent } from './schedule-getall/schedule-getall.compo
 import { ScheduleFetchComponent } from './schedule-fetch/schedule-fetch.component';
 import { ScheduleUpdateComponent } from './schedule-update/schedule-update.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+
+import { ChangePasswordComponent } from './change-password/change-password.component';
+
+
 import { UserProfileComponent } from './user-profile/user-profile.component';
+
 
 
 @NgModule({
@@ -46,6 +51,12 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     RegistrationComponent,
     AppHeaderComponent,
     AppFooterComponent,
+
+    UserProfileComponent, 
+    ForgotPasswordComponent, ChangePasswordComponent
+
+
+
     RouteCreateComponent,
     RouteGetallComponent,
     ScheduleCreateComponent,
@@ -54,6 +65,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     ScheduleUpdateComponent,
     UserProfileComponent,
     ForgotPasswordComponent
+
   ],
   imports: [
     BrowserModule,
